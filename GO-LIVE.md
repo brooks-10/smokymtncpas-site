@@ -137,3 +137,27 @@ minutes to an hour). This is why step ⑥ says wait.
 - Pricing figures in the v3 calculator are marked `v-DRAFT` in code comments
   and are expected to be tuned after Karen's Tuesday follow-up — see the
   `PRICING` block in `assets/pricing-calculator.js`.
+- **Update 2026-07-30 (v4 — art direction pass):** v3 was rated "competent
+  but generic." v4 gives the site a signature built on the firm's own
+  identity — see `Bots/completed/2026-07-30-website-v4-wrap.md`. Summary of
+  what changed: self-hosted Fraunces + Schibsted Grotesk (replacing
+  Playfair/DM Sans and the system-font fallback), a new autumn palette
+  (pine-charcoal ink / maple / brass / pine-green, replacing the navy-teal
+  v3 palette), an ownable "smoky ridgeline" motif (SVG divider + faint
+  topographic texture on every dark band, all pure CSS, no per-page markup),
+  ghosted giant numerals behind the 3-step process and numbered pain lists,
+  a full-width pull-quote band (homepage + all three niche pages), a new
+  "your dad's bookkeeper vs. Smoky Mountain" comparison table, a framed/
+  overlapping hero photo, a count-up pricing total, and whisper-quiet
+  scroll motion (all gated behind `prefers-reduced-motion`). Also fixed:
+  two Learning Center articles that still cited the old revenue-band
+  pricing model instead of the current Foundations/Growth/Partner levels.
+  Still local-only — nothing pushed, WordPress still live at
+  smokymtncpas.com. New self-hosted assets to know about: `/assets/fonts/`
+  (3 woff2 files), `/assets/site.js` (nav scroll + scroll-reveal, replaces
+  the old inline per-page script), `/assets/images/favicon.svg`,
+  `/assets/images/og-v4.png` (used as the OG image on all 20 pages — one
+  consistent branded image, not per-page screenshots), and
+  `/assets/og-source.html` (the HTML source the OG PNG was rendered from
+  via headless Chrome — not part of the live site, kept only so the image
+  can be regenerated later if needed).

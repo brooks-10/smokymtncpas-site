@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1F2A24">
+<link rel="preload" href="/assets/fonts/fraunces-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/schibsted-grotesk-variable.woff2" as="font" type="font/woff2" crossorigin>
 <title>Profit First Coaching for Ecommerce Businesses | Smoky Mountain CPAs</title>
 <meta name="description" content="CPA-backed Profit First coaching for Shopify and ecommerce store owners — built into every Smoky Mountain CPAs bookkeeping package, not sold separately. See plans and pricing.">
 <link rel="canonical" href="https://smokymtncpas.com/profit-first/">
@@ -10,9 +13,10 @@
 <meta property="og:title" content="Profit First Coaching for Ecommerce Businesses | Smoky Mountain CPAs">
 <meta property="og:description" content="CPA-backed Profit First coaching for Shopify and ecommerce store owners — built into every Smoky Mountain CPAs bookkeeping package, not sold separately. See plans and pricing.">
 <meta property="og:url" content="https://smokymtncpas.com/profit-first/">
-<meta property="og:image" content="https://smokymtncpas.com/assets/images/EST.webp">
+<meta property="og:image" content="https://smokymtncpas.com/assets/images/og-v4.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="/assets/images/EST.webp">
+<link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+<link rel="alternate icon" href="/assets/images/EST.webp">
 <link rel="stylesheet" href="/assets/style.css">
 </head>
 <body>
@@ -43,7 +47,7 @@
 <section class="hero">
   <div class="wrap center">
     <h1>Profit First Coaching</h1>
-    <h2 style="color:#fffdf9;">Stop wondering where the money went. Start making profit intentional.</h2>
+    <h2 style="color:#fffaf2;">Stop wondering where the money went. Start making profit <em>intentional</em>.</h2>
     <p>Profit First flips the formula. Instead of hoping something is left over, you pay your business&rsquo;s profit, your salary, and your taxes first &mdash; then run on what remains.</p>
     <ul style="list-style:none;padding:0;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
       <li>&#10003; Cash flow you can predict</li>
@@ -61,11 +65,20 @@
     <p>If your business is making money but you never seem to have any, you&rsquo;re not alone &mdash; and it&rsquo;s not a math problem you can&rsquo;t solve. It&rsquo;s a system problem.</p>
     <p>Profit First Coaching gives you a simple, repeatable cash-management system so you always know what&rsquo;s yours to keep, what&rsquo;s owed, and what&rsquo;s safe to spend.</p>
     <h3>Sound familiar?</h3>
-    <div class="step"><span class="step-num">1</span><p>You check your bank balance to decide if you can afford something.</p></div>
-    <div class="step"><span class="step-num">2</span><p>Tax season is a stressful scramble to find the money.</p></div>
-    <div class="step"><span class="step-num">3</span><p>You pay yourself last &mdash; if there&rsquo;s anything left.</p></div>
-    <div class="step"><span class="step-num">4</span><p>Revenue is up but your stress is higher than ever.</p></div>
-    <div class="step"><span class="step-num">5</span><p>You have no idea if you&rsquo;re actually profitable.</p></div>
+    <div class="step-list">
+      <div class="step"><span class="step-num">1</span><p>You check your bank balance to decide if you can afford something.</p></div>
+      <div class="step"><span class="step-num">2</span><p>Tax season is a stressful scramble to find the money.</p></div>
+      <div class="step"><span class="step-num">3</span><p>You pay yourself last &mdash; if there&rsquo;s anything left.</p></div>
+      <div class="step"><span class="step-num">4</span><p>Revenue is up but your stress is higher than ever.</p></div>
+      <div class="step"><span class="step-num">5</span><p>You have no idea if you&rsquo;re actually profitable.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pull-quote">
+  <div class="wrap">
+    <blockquote>A P&amp;L tells you what happened. <em>Profit First tells you what to do next.</em></blockquote>
+    <cite>The Smoky Mountain way.</cite>
   </div>
 </section>
 
@@ -74,7 +87,7 @@
     <p class="small" style="color:var(--rust);">How it works</p>
     <h2>A system, not a spreadsheet you&rsquo;ll abandon.</h2>
     <p>Three steps turn cash chaos into a calm, predictable routine you can actually stick to.</p>
-    <div class="grid grid-3">
+    <div class="grid grid-3 step-grid">
       <div class="card"><h4>Set up your accounts</h4><p>We open a handful of purpose-driven bank accounts &mdash; Profit, Owner&rsquo;s Pay, Taxes, and Operating Expenses &mdash; so every dollar has a job the moment it arrives.</p></div>
       <div class="card"><h4>Allocate by percentage</h4><p>On a simple rhythm, income gets divided into those accounts by target percentages tailored to your business, not a generic template.</p></div>
       <div class="card"><h4>Run on what remains</h4><p>You spend from Operating Expenses with total clarity. Profit, pay, and taxes are already handled &mdash; no more end-of-quarter surprises.</p></div>
@@ -116,6 +129,7 @@
 
 </main>
 <footer class="site-footer">
+  <div class="wrap footer-signoff"><p class="footer-signoff-line">Know your numbers.</p></div>
   <div class="wrap footer-main">
     <div class="footer-brand">
       <img src="/assets/images/EST.webp" alt="Smoky Mountain CPAs" width="40" height="40">
@@ -156,12 +170,6 @@
     </div>
   </div>
 </footer>
-<script>
-document.querySelector('.nav-toggle').addEventListener('click', function () {
-  var nav = document.querySelector('.site-nav');
-  var open = nav.classList.toggle('open');
-  this.setAttribute('aria-expanded', open ? 'true' : 'false');
-});
-</script>
+<script src="/assets/site.js"></script>
 </body>
 </html>

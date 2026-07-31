@@ -8,6 +8,11 @@
    cadence label, or blurb, edit ONLY the block below. Nothing else in this
    file, or in index.html, needs to change — card text and the live total
    both read from here. Vanilla JS, no build step, no framework, no backend.
+
+   v4 note: the total now counts up (~400ms) on every change instead of
+   snapping instantly, per the art-direction pass. The count-up is purely
+   cosmetic — it's skipped entirely under prefers-reduced-motion, in which
+   case the total just sets immediately, same as before.
 */
 
 (function () {
@@ -55,7 +60,7 @@
   /* ============================================================== */
 
   function formatMoney(n) {
-    return "$" + n.toLocaleString("en-US");
+    return "$" + Math.round(n).toLocaleString("en-US");
   }
 
   function init() {
@@ -66,6 +71,57 @@
     var addonInputs = Array.prototype.slice.call(root.querySelectorAll('.calc-addon input[type="checkbox"]'));
     var totalEl = root.querySelector("#calc-total");
     var ctaEl = root.querySelector("#calc-cta");
+
+    var prefersReducedMotion =
+      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var currentDisplayed = null; // tracks the last rendered total, for count-up start point
+    var countUpRaf = null;
+
+    function setTotalText(n) {
+      if (totalEl) totalEl.innerHTML = formatMoney(n) + "<span>/mo</span>";
+    }
+
+    function animateTotalTo(target) {
+      if (!totalEl) return;
+      // Skip the animation outright when there's nothing to animate FROM yet,
+      // when the visitor prefers reduced motion, or when the document isn't
+      // visible — requestAnimationFrame callbacks are throttled/suspended for
+      // hidden documents by design, which would otherwise leave the total
+      // stuck showing a stale, incorrect number indefinitely.
+      if (currentDisplayed === null || prefersReducedMotion || document.hidden) {
+        setTotalText(target);
+        currentDisplayed = target;
+        return;
+      }
+      var start = currentDisplayed;
+      var startTime = null;
+      var duration = 400; // ~400ms tick, per the art-direction spec
+      if (countUpRaf) window.cancelAnimationFrame(countUpRaf);
+      // Hard safety net: whatever happens with rAF, the total must read
+      // correctly no later than duration + a small buffer after a change.
+      var fallbackTimer = window.setTimeout(function () {
+        setTotalText(target);
+        currentDisplayed = target;
+      }, duration + 120);
+      function tick(ts) {
+        if (startTime === null) startTime = ts;
+        var elapsed = ts - startTime;
+        var progress = Math.min(elapsed / duration, 1);
+        // ease-out cubic — quick start, gentle settle
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var value = start + (target - start) * eased;
+        setTotalText(value);
+        if (progress < 1) {
+          countUpRaf = window.requestAnimationFrame(tick);
+        } else {
+          window.clearTimeout(fallbackTimer);
+          setTotalText(target);
+          currentDisplayed = target;
+          countUpRaf = null;
+        }
+      }
+      countUpRaf = window.requestAnimationFrame(tick);
+    }
 
     // Populate level card text from PRICING so numbers live in exactly one place.
     root.querySelectorAll(".calc-level").forEach(function (card) {
@@ -123,7 +179,7 @@
       var addonsTotal = selectedAddonsTotal();
       var total = level.price + addonsTotal;
 
-      if (totalEl) totalEl.innerHTML = formatMoney(total) + '<span>/mo</span>';
+      animateTotalTo(total);
 
       root.querySelectorAll(".calc-level").forEach(function (card) {
         var input = card.querySelector('input[name="calc-level"]');
