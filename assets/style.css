@@ -72,8 +72,13 @@
   --sp-5:48px;
   --sp-6:64px;
   --sp-7:88px;
-  --section-pad: clamp(40px, 7vw, var(--sp-6));
-  --section-pad-lg: clamp(56px, 9vw, var(--sp-7));
+  /* v5 SPACING PUNCH LIST (2026-07-31): section padding trimmed — the old
+     40-64px (standard) / 56-88px (hero) scale was stacking with the
+     ridgeline divider + adjacent section's own padding into 400-650px
+     voids between content blocks (measured, not eyeballed — see the
+     acceptance audit in the job ticket). Two sizes only, both smaller. */
+  --section-pad: clamp(28px, 4vw, 40px);
+  --section-pad-lg: clamp(40px, 6vw, 60px);
 
   /* Component depth */
   --radius: 10px;
@@ -108,6 +113,12 @@ body{
    full-bleed pseudo-element below is sized/positioned to stay within its
    own element's box. */
 img{max-width:100%;height:auto;display:block;}
+/* figure carries a 1em/40px browser default margin — zeroed so wrapping a
+   dense content block (data table, comparison grid, stat row, pull-quote)
+   in <figure> never adds unintended whitespace around it. figure is also
+   used deliberately here as the semantic wrapper for exactly these
+   self-contained blocks (v5 spacing fix — see style.css header note). */
+figure{margin:0;}
 a{color:var(--pine);}
 a:hover{color:var(--maple-ink);}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--sp-3);}
@@ -236,13 +247,18 @@ section{padding:var(--section-pad) 0;}
 }
 .hero .eyebrow,.section-dark .eyebrow,.pull-quote .eyebrow{color:var(--brass-light);}
 
-/* ---- Ridgeline motif: entry divider on dark bands + footer top edge ---- */
+/* ---- Ridgeline motif: entry divider on dark bands + footer top edge.
+   v5: the divider LIVES INSIDE the band transition — capped well under the
+   96px ceiling from the punch list, and the section immediately before a
+   divider is required to drop its own bottom padding to --sp-2 (below) so
+   the divider reads as ONE transition, not a divider added on top of two
+   full sections' worth of padding. ---- */
 .hero,.section-dark,.stat-band,.pull-quote,.site-footer{position:relative;}
 .section-dark::before,.stat-band::before,.pull-quote::before,.site-footer::before{
   content:"";
   display:block;
   width:100%;
-  height:clamp(36px,6vw,64px);
+  height:clamp(20px,3vw,32px);
   background-image:var(--ridge-cream);
   background-repeat:no-repeat;
   background-size:100% 100%;
@@ -252,8 +268,20 @@ section{padding:var(--section-pad) 0;}
 .pull-quote::before{background-position:center;transform:scaleX(-1) scaleY(-1);}
 .site-footer::before{
   transform:scaleX(-1);
-  height:clamp(48px,7vw,80px);
+  height:clamp(24px,3.5vw,36px);
 }
+/* Sections whose NEXT sibling opens with a divider (dark band, stat band,
+   pull-quote) drop their own bottom padding — the divider supplies the
+   visual separation, so the two shouldn't stack. Same for whatever section
+   sits last before the footer (which has its own divider). */
+section:has(+ .section-dark),
+section:has(+ .stat-band),
+section:has(+ .pull-quote),
+main > section:last-child{
+  padding-bottom: var(--sp-3);
+}
+/* ...and the dark/divider band itself drops its facing top padding to match. */
+.section-dark, .stat-band, .pull-quote{padding-top: var(--sp-3);}
 /* Faint topographic contour texture — dark bands only, always BEHIND the
    text (never covering it): absolute, z-index 0, content sits at z-index 1. */
 .hero::after,.section-dark::after,.stat-band::after,.pull-quote::after{
@@ -407,19 +435,23 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
   .post-list li > a{grid-template-columns:1fr;grid-template-areas:"thumb" "title" "excerpt";}
 }
 
-/* Footer */
-.site-footer{background:var(--ink);color:#cfd9cf;margin-top:var(--sp-6);}
-.footer-signoff{padding:var(--sp-3) 0 0;}
+/* Footer — v5: margin-top/divider/signoff padding trimmed together (was
+   64 + up to 80 + 24 = up to 168px of dead space before a single word of
+   footer content rendered, on top of whatever padding the last section on
+   the page already had). */
+.site-footer{background:var(--ink);color:#cfd9cf;margin-top:var(--sp-2);}
+.footer-signoff{padding:var(--sp-1) 0 0;}
 .footer-signoff-line{
   font-family:var(--serif);font-weight:600;font-style:italic;
   font-size:clamp(1.6rem,4vw,2.6rem);color:var(--cream);margin:0;
 }
 .footer-main{
-  padding:var(--sp-5) 0 var(--sp-5);
+  padding:var(--sp-4) 0 var(--sp-4);
   display:grid;gap:var(--sp-4);
   grid-template-columns:1.3fr 1fr 1fr 1fr;
+  align-items:start;
 }
-.footer-brand{display:flex;flex-direction:column;gap:var(--sp-2);}
+.footer-brand{display:flex;flex-direction:column;gap:var(--sp-1);}
 .footer-brand img{border-radius:6px;}
 .footer-brand p{margin:0;font-size:14px;color:#cfd9cf;}
 .footer-brand .footer-credentials{
@@ -435,7 +467,7 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
 .footer-col a{color:#cfd9cf;text-decoration:none;font-size:14px;}
 .footer-col a:hover{color:var(--brass-light);}
 .footer-bottom{
-  border-top:1px solid rgba(250,246,238,.14);padding:var(--sp-3) 0;
+  border-top:1px solid rgba(250,246,238,.14);padding:var(--sp-2) 0;
   font-size:13px;color:#93a294;
 }
 .footer-bottom .wrap{
@@ -471,7 +503,7 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
 /* ---- Split hero — copy left, framed/overlapping photo right. ---- */
 .hero-split{
   display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
-  gap:var(--sp-5);align-items:center;text-align:left;
+  gap:var(--sp-5);align-items:end;text-align:left;
 }
 .hero-copy .eyebrow{margin-bottom:var(--sp-2);}
 .hero-trustline{
