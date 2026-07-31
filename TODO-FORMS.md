@@ -1,6 +1,18 @@
 # TODO — Forms (Brooks decides, not the bot)
 
-## What the live site actually has today (PROVEN — checked the raw HTML of every page)
+## RESOLVED 2026-07-30 (v3 ticket) — CTA links only, not the real Stripe form
+
+The "Recommended fix" below shipped as part of the 2026-07-30 v3 ticket
+(mobile + pricing calculator + PF package framing), which explicitly
+instructed wiring every `STRIPE_LINK_HERE` / `CALENDLY_LINK_HERE` / dead
+`href="#"` CTA to `https://calendly.com/smokymountaincpas`. That includes the
+"Buy the Diagnostic — $497" buttons, which previously had no known-good
+Stripe link at all — they now route to booking a call instead, as an interim
+measure, not a real checkout. **Still open:** an actual Stripe Payment Link
+for the $497 Diagnostic (option below), and a real contact/inquiry form.
+Original context preserved below for that remaining work.
+
+## What the live site actually had before v3 (PROVEN — checked the raw HTML of every page)
 
 - **No real contact/booking form exists on the live WordPress site.** The only `<form>` elements found anywhere on smokymtncpas.com are the default WordPress **blog-comment forms** (name/email/website/comment) on the 7 blog posts — pure WP cruft, not a business-facing form. They were intentionally **dropped** from the rebuild (nobody was using blog comments; reproducing them would need a comment backend this static site doesn't have).
 - The site's actual conversion paths are two **links**, not forms:

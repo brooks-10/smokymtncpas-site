@@ -89,7 +89,7 @@ At whatever DNS host currently manages smokymtncpas.com:
 - Give DNS 10 minutes to a few hours to propagate (`dig smokymtncpas.com` from the M4 to check).
 - Confirm `https://smokymtncpas.com/` loads the new static site (not WordPress).
 - Confirm `http://` redirects to `https://` (GitHub Pages does this automatically once "Enforce HTTPS" is checked in step ③).
-- Click through every one of the 16 pages listed in the wrap report — confirm each resolves at its expected path with no 404s.
+- Click through every one of the 19 pages listed in the wrap report (16 from the original rebuild + 3 v3 niche pages: `/shopify/`, `/contractors/`, `/retail/`) — confirm each resolves at its expected path with no 404s.
 - Check `https://smokymtncpas.com/sitemap.xml` and `/robots.txt` both serve correctly.
 
 ## ⑥ Only then — retire WordPress hosting
@@ -117,11 +117,23 @@ minutes to an hour). This is why step ⑥ says wait.
 ## What this repo does NOT do
 
 - No forms are wired to a real backend yet — see `TODO-FORMS.md`.
-- No redesign — this is content-identical to the WordPress site as of
-  2026-07-30. Visual/UX improvements are intentionally deferred (Karen's
-  gap-analysis work, a separate future project).
-- Two things already broken on the *live* WordPress site (`STRIPE_LINK_HERE`
-  / `CALENDLY_LINK_HERE` placeholder links, several dead `href="#"` CTAs on
-  the homepage) were carried over verbatim rather than fixed, per the
-  content-identical scope fence. See `TODO-FORMS.md` for the exact locations
-  and a proposed low-risk fix Brooks can approve separately.
+- **Update 2026-07-30 (v3):** the original rebuild below was intentionally
+  content-identical to WordPress, with visual/UX work deferred to a later
+  pass. That later pass happened — see `Bots/completed/2026-07-30-website-v3-wrap.md`.
+  v3 shipped a full mobile-responsive pass, a typography/spacing rhythm pass,
+  Karen's tiered pricing model with an interactive calculator (`/#pricing`),
+  homepage bookkeeping+Profit First package framing, and three new niche
+  pages (`/shopify/`, `/contractors/`, `/retail/`). The site is no longer
+  content-identical to the original WordPress export by design — this was a
+  deliberate, ticketed content/UX change, not scope creep. It is still a
+  **local-only** change: nothing here has been pushed, and WordPress is still
+  what's live at smokymtncpas.com until Brooks runs steps ①–④ above.
+- The `STRIPE_LINK_HERE` / `CALENDLY_LINK_HERE` / dead `href="#"` CTAs that
+  were carried over verbatim in the original rebuild (see below) were fixed
+  in v3 — all now point to `https://calendly.com/smokymountaincpas`. The
+  Diagnostic Review's Stripe checkout (a real payment flow) is still not
+  built; that CTA now routes to booking a call instead until a real Stripe
+  Payment Link exists.
+- Pricing figures in the v3 calculator are marked `v-DRAFT` in code comments
+  and are expected to be tuned after Karen's Tuesday follow-up — see the
+  `PRICING` block in `assets/pricing-calculator.js`.
