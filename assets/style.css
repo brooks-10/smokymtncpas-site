@@ -118,7 +118,10 @@ img{max-width:100%;height:auto;display:block;}
    in <figure> never adds unintended whitespace around it. figure is also
    used deliberately here as the semantic wrapper for exactly these
    self-contained blocks (v5 spacing fix — see style.css header note). */
-figure{margin:0;}
+figure{margin:32px 0;}
+figure:first-child{margin-top:0;}
+figure:last-child{margin-bottom:0;}
+figure + figure{margin-top:24px;}
 a{color:var(--pine);}
 a:hover{color:var(--maple-ink);}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 var(--sp-3);}
@@ -613,11 +616,11 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
 /* ------------------------------------------------------------------ */
 .calc{margin-top:32px;}
 .calc-levels{
-  display:grid;gap:18px;margin-bottom:24px;
+  display:grid;gap:18px;margin-bottom:24px;padding-top:14px;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
 }
 .calc-level{
-  position:relative;display:block;cursor:pointer;overflow:hidden;
+  position:relative;display:block;cursor:pointer;overflow:visible;
   background:var(--surface);border:2px solid var(--line);border-radius:var(--radius);
   padding:22px 20px;box-shadow:var(--shadow-sm);
   transition:border-color .15s,box-shadow .15s,transform .15s;
@@ -628,13 +631,22 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
 }
 /* Featured/popular tier: maple top-border + a faint ridgeline watermark. */
 .calc-level[data-popular="true"]{
-  border-color:var(--maple);border-top-width:4px;
+  background:var(--ink);border-color:var(--maple);
+  transform:scale(1.04);
+  box-shadow:0 16px 44px rgba(31,42,36,.30);
+  z-index:2;
 }
+.calc-level[data-popular="true"]:hover{transform:scale(1.04) translateY(-2px);}
+.calc-level[data-popular="true"] .calc-level-name{color:var(--cream);}
+.calc-level[data-popular="true"] .calc-level-price{color:var(--brass-light);}
+.calc-level[data-popular="true"] .calc-level-price span{color:#A9B5AC;}
+.calc-level[data-popular="true"] .calc-level-cadence{color:#B8C4BC;}
+.calc-level[data-popular="true"] .calc-level-blurb{color:#DDE4DF;}
 .calc-level[data-popular="true"]::after{
-  content:"";position:absolute;inset:0;
+  content:"";position:absolute;inset:0;border-radius:inherit;overflow:hidden;
   background-image:var(--ridge-ink);
   background-repeat:no-repeat;background-position:bottom;background-size:100% 55%;
-  opacity:.6;pointer-events:none;z-index:0;
+  opacity:.25;pointer-events:none;z-index:0;
 }
 .calc-level > *{position:relative;z-index:1;}
 .calc-level:has(input:checked),.calc-level.is-selected{
@@ -643,8 +655,9 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
 .calc-level:has(input:focus-visible){outline:3px solid var(--maple-ink);outline-offset:2px;}
 .calc-level-badge{
   display:none;background:var(--maple-deep);color:#fff;font-size:11px;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:3px;
-  position:absolute;top:-11px;left:20px;z-index:2;
+  letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:999px;
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);z-index:3;
+  box-shadow:0 3px 10px rgba(31,42,36,.25);white-space:nowrap;
 }
 .calc-level[data-popular="true"] .calc-level-badge{display:inline-block;}
 .calc-level-name{
