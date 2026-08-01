@@ -726,3 +726,11 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
   .calc-addons{padding:4px 16px;}
   .calc-total-box{padding:26px 18px;}
 }
+
+/* v7 spacing pass — checklist rhythm (2026-08-01) */
+.checklist{list-style:none;padding-left:0;margin:20px 0 28px;}
+.checklist li{margin-bottom:12px;line-height:1.55;padding-left:4px;}
+.calc{margin-bottom:56px;}
+#pricing h3{margin-top:44px;margin-bottom:14px;}
+#pricing .checklist + p{margin-top:6px;}
+section .wrap > h3 + p{margin-top:0;}
