@@ -340,6 +340,9 @@ hr{border:none;border-top:1px solid var(--line);margin:var(--sp-4) 0;}
 .grid{display:grid;gap:var(--sp-3);}
 /* stacked grids butt together at 0px otherwise — match the internal row gap */
 .grid + .grid{margin-top:var(--sp-3);}
+/* same seam when a lone card (or paragraph) directly follows a grid */
+.grid + .card{margin-top:var(--sp-3);}
+.grid + p{margin-top:var(--sp-3);}
 .grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
 .grid-3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
 .card{
