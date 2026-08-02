@@ -334,6 +334,8 @@ main > section:last-child{
 hr{border:none;border-top:1px solid var(--line);margin:var(--sp-4) 0;}
 
 .grid{display:grid;gap:var(--sp-3);}
+/* stacked grids butt together at 0px otherwise — match the internal row gap */
+.grid + .grid{margin-top:var(--sp-3);}
 .grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
 .grid-3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
 .card{
@@ -599,7 +601,7 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
   .compare-head{display:none;}
   .compare-cell{display:block;padding:3px 0;border:none;font-size:14px;}
   .compare-label{font-family:var(--serif);font-weight:600;font-size:17px;color:var(--ink);margin-bottom:6px;}
-  .compare-cell.compare-dad::before{content:"Dad's bookkeeper — ";font-weight:600;color:var(--muted);}
+  .compare-cell.compare-them::before{content:"Dad's bookkeeper — ";font-weight:600;color:var(--muted);}
   .compare-cell.compare-us::before{content:"Smoky Mountain — ";font-weight:600;color:var(--maple-ink);}
   .compare-us{background:none;border-left:none;padding-left:0;}
 }
