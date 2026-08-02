@@ -409,6 +409,10 @@ tr:nth-child(even) td{background:#F5F0E4;}
 }
 .person{display:flex;gap:var(--sp-3);align-items:flex-start;margin-bottom:var(--sp-4);flex-wrap:wrap;}
 .person:last-child{margin-bottom:0;}
+/* inside a grid the gap owns the spacing — don't stack a margin on top of it */
+.grid > .person{margin-bottom:0;}
+.person > div{flex:1 1 auto;}
+.person > div > *:last-child{margin-bottom:0;}
 
 blockquote{
   border-left:3px solid var(--brass);margin:0 0 1em;padding:4px 0 4px 20px;
