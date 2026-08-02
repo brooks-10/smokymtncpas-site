@@ -292,9 +292,41 @@ var WORKER_URL = "https://smcpas-chat.brooks-e6f.workers.dev";
     scrollDown();
   }
 
+  /* Tappable starter questions — shown until the visitor sends anything. */
+  var STARTERS = [
+    "How much does monthly bookkeeping cost?",
+    "What's included in the $497 Diagnostic Review?",
+    "Do you work with businesses like mine?",
+    "My books are a mess. Can you clean them up?",
+    "Do you file tax returns?",
+  ];
+
+  function renderStarters() {
+    if (messages.length) return;
+    var row = el("div", "smc-chat-starters");
+    STARTERS.forEach(function (q) {
+      var b = el("button", "smc-chat-starter", q);
+      b.type = "button";
+      b.addEventListener("click", function () {
+        track("chat_starter_clicked", { question: q });
+        input.value = q;
+        submit();
+      });
+      row.appendChild(b);
+    });
+    log.appendChild(row);
+    scrollDown();
+  }
+
+  function clearStarters() {
+    var row = log.querySelector(".smc-chat-starters");
+    if (row) row.remove();
+  }
+
   function renderAll() {
     log.innerHTML = "";
     addBubble("assistant", GREETING);
+    renderStarters();
     for (var i = 0; i < messages.length; i++) {
       addBubble(messages[i].role === "user" ? "user" : "assistant", messages[i].content);
     }
@@ -403,6 +435,7 @@ var WORKER_URL = "https://smcpas-chat.brooks-e6f.workers.dev";
 
     input.value = "";
     autoGrow();
+    clearStarters();
     addBubble("user", text);
     messages.push({ role: "user", content: text });
     save();

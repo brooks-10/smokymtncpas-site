@@ -276,6 +276,38 @@
   }
 }
 
+/* ---- starter question chips ---- */
+
+.smc-chat-starters {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-self: flex-start;
+  max-width: 92%;
+  padding: 2px 0 4px;
+}
+.smc-chat-starter {
+  padding: 9px 13px;
+  border: 1.5px solid var(--smc-line, #E2DAC8);
+  border-radius: 14px;
+  background: transparent;
+  color: var(--smc-ink);
+  font-family: var(--smc-sans);
+  font-size: 13.5px;
+  line-height: 1.35;
+  text-align: left;
+  cursor: pointer;
+}
+.smc-chat-starter:hover {
+  border-color: var(--smc-maple-deep);
+  color: var(--smc-maple-deep);
+}
+.smc-chat-starter:focus-visible { outline: 2px solid var(--smc-pine); outline-offset: 2px; }
+@media (prefers-color-scheme: dark) {
+  .smc-chat-starter { color: var(--smc-cream); }
+  .smc-chat-starter:hover { color: #E8A06A; border-color: #E8A06A; }
+}
+
 /* ---- inline call to action ---- */
 
 .smc-chat-cta {
