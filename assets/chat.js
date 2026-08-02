@@ -13,7 +13,7 @@
  * Get the URL from `wrangler deploy` in the smcpas-chat-worker repo. It looks
  * like https://smcpas-chat.<subdomain>.workers.dev
  */
-var WORKER_URL = "";
+var WORKER_URL = "https://smcpas-chat.brooks-e6f.workers.dev";
 /* ========================================================================= */
 
 (function () {
