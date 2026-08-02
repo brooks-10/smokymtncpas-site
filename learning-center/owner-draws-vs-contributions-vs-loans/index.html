@@ -18,6 +18,31 @@
 <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
 <link rel="alternate icon" href="/assets/images/EST.webp">
 <link rel="stylesheet" href="/assets/style.css">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2G7BW0Y1GE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2G7BW0Y1GE');
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('a[href^="https://buy.stripe.com"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        gtag('event', 'begin_checkout', {currency: 'USD', value: 497, item_name: 'Diagnostic Review'});
+      });
+    });
+    document.querySelectorAll('a[href*="calendly.com"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        gtag('event', 'generate_lead', {lead_type: 'discovery_call_click'});
+      });
+    });
+    document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        gtag('event', 'contact', {contact_type: 'phone_click'});
+      });
+    });
+  });
+</script>
 </head>
 <body>
 <header class="site-header">
