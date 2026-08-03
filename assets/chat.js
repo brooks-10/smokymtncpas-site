@@ -292,7 +292,7 @@ var WORKER_URL = "https://smcpas-chat.brooks-e6f.workers.dev";
     scrollDown();
   }
 
-  /* Tappable starter questions — shown until the visitor sends anything. */
+  /* Tappable starter questions - shown until the visitor sends anything. */
   var STARTERS = [
     "How much does monthly bookkeeping cost?",
     "What's included in the $497 Diagnostic Review?",

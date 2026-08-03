@@ -1,17 +1,17 @@
-/* Smoky Mountain CPAs — pricing calculator (v-DRAFT)
+/* Smoky Mountain CPAs - pricing calculator (v-DRAFT)
    Built 2026-07-30 from Karen's pricing-model session. Level figures are
    DRAFT and expected to be tuned after Tuesday's follow-up. Sales Tax
-   bolt-on ($200/mo) is Brooks's confirmed real minimum, not a placeholder —
+   bolt-on ($200/mo) is Brooks's confirmed real minimum, not a placeholder -
    still kept in this same tunable block. Payroll bolt-on remains a
    reasonable placeholder pending Karen's number. Every price lives in the
-   single PRICING block below — that's WHY it's here: to change a price,
+   single PRICING block below - that's WHY it's here: to change a price,
    cadence label, or blurb, edit ONLY the block below. Nothing else in this
-   file, or in index.html, needs to change — card text and the live total
+   file, or in index.html, needs to change - card text and the live total
    both read from here. Vanilla JS, no build step, no framework, no backend.
 
    v4 note: the total now counts up (~400ms) on every change instead of
    snapping instantly, per the art-direction pass. The count-up is purely
-   cosmetic — it's skipped entirely under prefers-reduced-motion, in which
+   cosmetic - it's skipped entirely under prefers-reduced-motion, in which
    case the total just sets immediately, same as before.
 */
 
@@ -19,7 +19,7 @@
   "use strict";
 
   /* ============================================================== */
-  /* TUNABLE CONSTANTS — the only block Brooks should ever need to edit */
+  /* TUNABLE CONSTANTS - the only block Brooks should ever need to edit */
   /* ============================================================== */
   var PRICING = {
     levels: [
@@ -44,7 +44,7 @@
         name: "Partner",
         price: 1500,
         cadence: "Bi-weekly meetings + priority access",
-        blurb: "Our closest level of involvement — bi-weekly meetings and priority access to your CPA team.",
+        blurb: "Our closest level of involvement: bi-weekly meetings and priority access to your CPA team.",
         popular: false
       }
     ],
@@ -85,7 +85,7 @@
       if (!totalEl) return;
       // Skip the animation outright when there's nothing to animate FROM yet,
       // when the visitor prefers reduced motion, or when the document isn't
-      // visible — requestAnimationFrame callbacks are throttled/suspended for
+      // visible - requestAnimationFrame callbacks are throttled/suspended for
       // hidden documents by design, which would otherwise leave the total
       // stuck showing a stale, incorrect number indefinitely.
       if (currentDisplayed === null || prefersReducedMotion || document.hidden) {
@@ -107,7 +107,7 @@
         if (startTime === null) startTime = ts;
         var elapsed = ts - startTime;
         var progress = Math.min(elapsed / duration, 1);
-        // ease-out cubic — quick start, gentle settle
+        // ease-out cubic - quick start, gentle settle
         var eased = 1 - Math.pow(1 - progress, 3);
         var value = start + (target - start) * eased;
         setTotalText(value);
@@ -189,7 +189,7 @@
       if (ctaEl) {
         ctaEl.setAttribute(
           "aria-label",
-          "Book a fit call — currently configured at " + formatMoney(total) + " per month, " + level.name + " level"
+          "Book a fit call, currently configured at " + formatMoney(total) + " per month, " + level.name + " level"
         );
       }
     }

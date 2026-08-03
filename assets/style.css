@@ -1,17 +1,17 @@
-/* Smoky Mountain CPAs — shared stylesheet
+/* Smoky Mountain CPAs - shared stylesheet
    v4 ART DIRECTION PASS (2026-07-30). The v3 system (tokens, 8px spacing
-   scale, component-depth) stays intact — this pass replaces the palette,
+   scale, component-depth) stays intact - this pass replaces the palette,
    swaps system fonts for self-hosted Fraunces + Schibsted Grotesk, and adds
    the ridgeline identity system: a self-hosted SVG ridge motif used as a
    section divider on dark bands, a faint topographic contour texture on
    those same bands, ghosted giant numerals behind numbered content, an
    editorial pull-quote band, a comparison table, a framed/overlapping hero
    photo, whisper-quiet scroll motion, and a restyled pricing calculator.
-   Still hand-rolled, no framework/build step, no CDN — fonts are woff2
+   Still hand-rolled, no framework/build step, no CDN - fonts are woff2
    files self-hosted in /assets/fonts/. */
 
 /* ------------------------------------------------------------------ */
-/* Fonts — self-hosted, OFL-licensed. No CDN links.                    */
+/* Fonts - self-hosted, OFL-licensed. No CDN links.                    */
 /* ------------------------------------------------------------------ */
 @font-face{
   font-family:"Fraunces";
@@ -36,26 +36,26 @@
 }
 
 :root{
-  /* ---- Color tokens — the Smoky Mountain autumn palette ---- */
-  --ink:#1F2A24;           /* pine-charcoal — dark bands, headings */
-  --paper:#FAF6EE;         /* warm cream — page background */
-  --cream:#FAF6EE;         /* same warm cream — light text on dark, light fills */
+  /* ---- Color tokens - the Smoky Mountain autumn palette ---- */
+  --ink:#1F2A24;           /* pine-charcoal - dark bands, headings */
+  --paper:#FAF6EE;         /* warm cream - page background */
+  --cream:#FAF6EE;         /* same warm cream - light text on dark, light fills */
   --mist:#ECEFE8;          /* alternate light band (.section-alt) */
-  --maple:#C4622D;         /* THE accent — CTAs (large scale), flourish word, active states */
+  --maple:#C4622D;         /* THE accent - CTAs (large scale), flourish word, active states */
   --maple-deep:#AC521F;    /* darkened maple for solid button fills (AA w/ light text) */
   --maple-ink:#8C421A;     /* darkened maple for small maple-colored text */
-  --brass:#B0863A;         /* secondary accent — rules, frames, watermarks (decorative, not text) */
-  --brass-ink:#7C5A24;     /* brass, darkened — eyebrow/label text on light grounds */
-  --brass-light:#C99A4A;   /* brass, lightened — eyebrow/label text on dark grounds */
+  --brass:#B0863A;         /* secondary accent - rules, frames, watermarks (decorative, not text) */
+  --brass-ink:#7C5A24;     /* brass, darkened - eyebrow/label text on light grounds */
+  --brass-light:#C99A4A;   /* brass, lightened - eyebrow/label text on dark grounds */
   --pine:#2E5E4A;          /* links on light, hover states */
-  --surface:#ffffff;       /* true white — elevated cards/footer columns sit on this */
+  --surface:#ffffff;       /* true white - elevated cards/footer columns sit on this */
   --muted:#5B6B5C;
   --line:#E2DAC8;
   --max:1120px;
   --serif:"Fraunces",Georgia,serif;
   --sans:"Schibsted Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 
-  /* ---- Legacy aliases — kept so every existing rule/inline style still
+  /* ---- Legacy aliases - kept so every existing rule/inline style still
      resolves correctly under the new palette without a full markup churn. ---- */
   --accent:var(--maple);
   --gold:var(--brass-light);
@@ -64,7 +64,7 @@
   --teal-dark:var(--ink);
   --teal:var(--ink);
 
-  /* Spacing scale — 8px base, used everywhere instead of one-off px values. */
+  /* Spacing scale - 8px base, used everywhere instead of one-off px values. */
   --sp-1:8px;
   --sp-2:16px;
   --sp-3:24px;
@@ -72,10 +72,10 @@
   --sp-5:48px;
   --sp-6:64px;
   --sp-7:88px;
-  /* v5 SPACING PUNCH LIST (2026-07-31): section padding trimmed — the old
+  /* v5 SPACING PUNCH LIST (2026-07-31): section padding trimmed - the old
      40-64px (standard) / 56-88px (hero) scale was stacking with the
      ridgeline divider + adjacent section's own padding into 400-650px
-     voids between content blocks (measured, not eyeballed — see the
+     voids between content blocks (measured, not eyeballed - see the
      acceptance audit in the job ticket). Two sizes only, both smaller. */
   --section-pad: clamp(28px, 4vw, 40px);
   --section-pad-lg: clamp(40px, 6vw, 60px);
@@ -86,10 +86,10 @@
   --shadow-sm: 0 1px 2px rgba(31,42,36,.07), 0 2px 8px rgba(31,42,36,.06);
   --shadow-md: 0 4px 12px rgba(31,42,36,.09), 0 12px 28px rgba(31,42,36,.09);
 
-  /* ---- The ownable motif — smoky ridgelines (self-hosted inline SVG,
+  /* ---- The ownable motif - smoky ridgelines (self-hosted inline SVG,
      no external requests). Cream-tinted for use on dark ink bands; ink-
      tinted for use as a faint watermark on light surfaces. Three layered
-     silhouettes baked into each asset at opacity .06/.12/.2 — deliberately
+     silhouettes baked into each asset at opacity .06/.12/.2 - deliberately
      subtle; the failure mode we're guarding against is kitsch. ---- */
   --ridge-cream: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 160' preserveAspectRatio='none'%3E%3Cpath d='M0,120 L90,70 L180,100 L260,55 L340,95 L430,50 L520,90 L610,60 L700,98 L790,58 L880,92 L970,52 L1060,96 L1150,60 L1240,94 L1330,55 L1440,90 L1440,160 L0,160 Z' fill='%23FAF6EE' fill-opacity='0.06'/%3E%3Cpath d='M0,135 L110,95 L200,125 L300,85 L400,130 L500,90 L600,132 L700,95 L800,128 L900,88 L1000,130 L1100,92 L1200,126 L1300,90 L1440,120 L1440,160 L0,160 Z' fill='%23FAF6EE' fill-opacity='0.12'/%3E%3Cpath d='M0,150 L130,120 L230,145 L340,110 L450,148 L560,115 L670,150 L780,118 L890,146 L1000,112 L1110,148 L1220,116 L1440,140 L1440,160 L0,160 Z' fill='%23FAF6EE' fill-opacity='0.2'/%3E%3C/svg%3E");
   --ridge-ink: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 160' preserveAspectRatio='none'%3E%3Cpath d='M0,120 L90,70 L180,100 L260,55 L340,95 L430,50 L520,90 L610,60 L700,98 L790,58 L880,92 L970,52 L1060,96 L1150,60 L1240,94 L1330,55 L1440,90 L1440,160 L0,160 Z' fill='%231F2A24' fill-opacity='0.06'/%3E%3Cpath d='M0,135 L110,95 L200,125 L300,85 L400,130 L500,90 L600,132 L700,95 L800,128 L900,88 L1000,130 L1100,92 L1200,126 L1300,90 L1440,120 L1440,160 L0,160 Z' fill='%231F2A24' fill-opacity='0.12'/%3E%3Cpath d='M0,150 L130,120 L230,145 L340,110 L450,148 L560,115 L670,150 L780,118 L890,146 L1000,112 L1110,148 L1220,116 L1440,140 L1440,160 L0,160 Z' fill='%231F2A24' fill-opacity='0.2'/%3E%3C/svg%3E");
@@ -106,18 +106,18 @@ body{
   line-height:1.65;
   font-size:17px;
 }
-/* NOTE: deliberately NOT overflow-x:hidden on body/html — that breaks
+/* NOTE: deliberately NOT overflow-x:hidden on body/html - that breaks
    position:sticky on .site-header (any ancestor with overflow other than
    visible disables sticky for its descendants). Horizontal overflow from
    the decorative motifs is prevented at the source instead: every
    full-bleed pseudo-element below is sized/positioned to stay within its
    own element's box. */
 img{max-width:100%;height:auto;display:block;}
-/* figure carries a 1em/40px browser default margin — zeroed so wrapping a
+/* figure carries a 1em/40px browser default margin - zeroed so wrapping a
    dense content block (data table, comparison grid, stat row, pull-quote)
    in <figure> never adds unintended whitespace around it. figure is also
    used deliberately here as the semantic wrapper for exactly these
-   self-contained blocks (v5 spacing fix — see style.css header note). */
+   self-contained blocks (v5 spacing fix - see style.css header note). */
 figure{margin:32px 0;}
 figure:first-child{margin-top:0;}
 figure:last-child{margin-bottom:0;}
@@ -139,7 +139,7 @@ h1{font-size:clamp(2.8rem,7vw,5.5rem);line-height:1.05;font-weight:600;}
 h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;}
 h3{font-size:clamp(19px,2.4vw,24px);line-height:1.2;}
 h4{font-size:clamp(17px,2vw,18px);margin-bottom:.5em;line-height:1.3;font-weight:600;}
-/* The italic flourish word — ONE per major headline, per the art direction
+/* The italic flourish word - ONE per major headline, per the art direction
    spec. Large-scale use only (headline sizes clear WCAG AA-large 3:1 against
    both cream and ink; body-text-scale maple is handled by --maple-ink). */
 h1 em,h2 em,h3 em{
@@ -237,7 +237,7 @@ article p,article li,.prose p,.prose li{max-width:70ch;}
   .step{gap:12px;}
 }
 
-/* Hero / sections — alternating bands (ink / cream / mist / white). Flat
+/* Hero / sections - alternating bands (ink / cream / mist / white). Flat
    ink, not a gradient. */
 section{padding:var(--section-pad) 0;}
 .section-lg{padding:var(--section-pad-lg) 0;}
@@ -255,7 +255,7 @@ section{padding:var(--section-pad) 0;}
 .hero .eyebrow,.section-dark .eyebrow,.pull-quote .eyebrow{color:var(--brass-light);}
 
 /* ---- Ridgeline motif: entry divider on dark bands + footer top edge.
-   v5: the divider LIVES INSIDE the band transition — capped well under the
+   v5: the divider LIVES INSIDE the band transition - capped well under the
    96px ceiling from the punch list, and the section immediately before a
    divider is required to drop its own bottom padding to --sp-2 (below) so
    the divider reads as ONE transition, not a divider added on top of two
@@ -278,7 +278,7 @@ section{padding:var(--section-pad) 0;}
   height:clamp(24px,3.5vw,36px);
 }
 /* Sections whose NEXT sibling opens with a divider (dark band, stat band,
-   pull-quote) drop their own bottom padding — the divider supplies the
+   pull-quote) drop their own bottom padding - the divider supplies the
    visual separation, so the two shouldn't stack. Same for whatever section
    sits last before the footer (which has its own divider). */
 section:has(+ .section-dark),
@@ -289,7 +289,7 @@ main > section:last-child{
 }
 /* ...and the dark/divider band itself drops its facing top padding to match. */
 .section-dark, .stat-band, .pull-quote{padding-top: var(--sp-3);}
-/* Faint topographic contour texture — dark bands only, always BEHIND the
+/* Faint topographic contour texture - dark bands only, always BEHIND the
    text (never covering it): absolute, z-index 0, content sits at z-index 1. */
 .hero::after,.section-dark::after,.stat-band::after,.pull-quote::after{
   content:"";
@@ -303,7 +303,7 @@ main > section:last-child{
 }
 .hero > .wrap,.section-dark > .wrap,.stat-band > .wrap,.pull-quote > .wrap{position:relative;z-index:1;}
 
-/* Buttons — one radius/weight system, real hover AND focus-visible states. */
+/* Buttons - one radius/weight system, real hover AND focus-visible states. */
 .btn,.btn-outline,.btn-light{
   border-radius:var(--radius-sm);font-weight:700;text-decoration:none;
   margin:6px 8px 6px 0;transition:background-color .15s,color .15s,border-color .15s,transform .1s;
@@ -338,7 +338,7 @@ main > section:last-child{
 hr{border:none;border-top:1px solid var(--line);margin:var(--sp-4) 0;}
 
 .grid{display:grid;gap:var(--sp-3);}
-/* stacked grids butt together at 0px otherwise — match the internal row gap */
+/* stacked grids butt together at 0px otherwise - match the internal row gap */
 .grid + .grid{margin-top:var(--sp-3);}
 /* same seam when a lone card (or paragraph) directly follows a grid */
 .grid + .card{margin-top:var(--sp-3);}
@@ -371,10 +371,10 @@ hr{border:none;border-top:1px solid var(--line);margin:var(--sp-4) 0;}
   display:flex;align-items:center;justify-content:center;font-size:14px;
 }
 
-/* ---- Ghosted giant numerals — 3-step process cards (.step-grid) and
+/* ---- Ghosted giant numerals - 3-step process cards (.step-grid) and
    numbered pain lists (.step-list). CSS counters, no markup duplication.
    Kept small/contained enough to never overlap neighboring rows or sit
-   under running text — the failure mode we're guarding against. ---- */
+   under running text - the failure mode we're guarding against. ---- */
 .step-grid{counter-reset:stepnum;}
 .step-grid .card{position:relative;overflow:hidden;}
 .step-grid .card::before{
@@ -418,7 +418,7 @@ tr:nth-child(even) td{background:#F5F0E4;}
 }
 .person{display:flex;gap:var(--sp-3);align-items:flex-start;margin-bottom:var(--sp-4);flex-wrap:wrap;}
 .person:last-child{margin-bottom:0;}
-/* inside a grid the gap owns the spacing — don't stack a margin on top of it */
+/* inside a grid the gap owns the spacing - don't stack a margin on top of it */
 .grid > .person{margin-bottom:0;}
 .person > div{flex:1 1 auto;}
 .person > div > *:last-child{margin-bottom:0;}
@@ -479,7 +479,7 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
   .post-list li > a{grid-template-columns:1fr;grid-template-areas:"thumb" "title" "excerpt";}
 }
 
-/* Footer — v5: margin-top/divider/signoff padding trimmed together (was
+/* Footer - v5: margin-top/divider/signoff padding trimmed together (was
    64 + up to 80 + 24 = up to 168px of dead space before a single word of
    footer content rendered, on top of whatever padding the last section on
    the page already had). */
@@ -544,7 +544,7 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
   display:block;font-size:13px;color:#cfd9cf;
 }
 
-/* ---- Split hero — copy left, framed/overlapping photo right. ---- */
+/* ---- Split hero - copy left, framed/overlapping photo right. ---- */
 .hero-split{
   display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);
   gap:var(--sp-5);align-items:end;text-align:left;
@@ -573,7 +573,7 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
   .hero-split{grid-template-columns:1fr;text-align:center;}
   .hero-trustline{justify-content:center;}
   .hero-photo{order:2;max-width:420px;margin:0 auto;}
-  /* the overlap collapses gracefully — no bleed into the next band once stacked */
+  /* the overlap collapses gracefully - no bleed into the next band once stacked */
   .hero-photo{margin-bottom:0;}
   .hero-photo::before{top:-8px;left:-8px;right:8px;bottom:8px;}
 }
@@ -595,7 +595,7 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
 }
 
 /* ------------------------------------------------------------------ */
-/* Pull-quote band — full-width ink editorial statement                */
+/* Pull-quote band - full-width ink editorial statement                */
 /* ------------------------------------------------------------------ */
 .pull-quote{background:var(--ink);color:var(--cream);}
 .pull-quote blockquote{
@@ -612,7 +612,7 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
 }
 
 /* ------------------------------------------------------------------ */
-/* Comparison table — "Your dad's bookkeeper vs. Smoky Mountain"       */
+/* Comparison table - "Your dad's bookkeeper vs. Smoky Mountain"       */
 /* ------------------------------------------------------------------ */
 .compare-table{
   display:grid;grid-template-columns:1.6fr 1fr 1fr;
@@ -636,13 +636,13 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
   .compare-head{display:none;}
   .compare-cell{display:block;padding:3px 0;border:none;font-size:14px;}
   .compare-label{font-family:var(--serif);font-weight:600;font-size:17px;color:var(--ink);margin-bottom:6px;}
-  .compare-cell.compare-them::before{content:"Most bookkeepers — ";font-weight:600;color:var(--muted);}
-  .compare-cell.compare-us::before{content:"Smoky Mountain — ";font-weight:600;color:var(--maple-ink);}
+  .compare-cell.compare-them::before{content:"Most bookkeepers: ";font-weight:600;color:var(--muted);}
+  .compare-cell.compare-us::before{content:"Smoky Mountain: ";font-weight:600;color:var(--maple-ink);}
   .compare-us{background:none;border-left:none;padding-left:0;}
 }
 
 /* ------------------------------------------------------------------ */
-/* Motion — whispers, not shouts. Everything below only runs when the  */
+/* Motion - whispers, not shouts. Everything below only runs when the  */
 /* visitor hasn't asked for reduced motion; absent that, content is    */
 /* simply visible with no transition, full stop.                      */
 /* ------------------------------------------------------------------ */
@@ -652,7 +652,7 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
 }
 
 /* ------------------------------------------------------------------ */
-/* Pricing calculator (v4 — restyled: Fraunces total, maple featured   */
+/* Pricing calculator (v4 - restyled: Fraunces total, maple featured   */
 /* tier, ridgeline watermark on the popular card)                      */
 /* ------------------------------------------------------------------ */
 .calc{margin-top:32px;}
@@ -693,7 +693,7 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
 .calc-level:has(input:checked),.calc-level.is-selected{
   border-color:var(--maple-deep);box-shadow:0 0 0 2px var(--maple-deep) inset,var(--shadow-md);background:var(--mist);
 }
-/* the popular card is dark with cream text — selecting it must NOT swap in the
+/* the popular card is dark with cream text - selecting it must NOT swap in the
    light mist background or the cream text disappears into it */
 .calc-level[data-popular="true"]:has(input:checked),.calc-level[data-popular="true"].is-selected{
   background:var(--ink);
@@ -775,7 +775,7 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
   .calc-total-box{padding:26px 18px;}
 }
 
-/* v7 spacing pass — checklist rhythm (2026-08-01) */
+/* v7 spacing pass - checklist rhythm (2026-08-01) */
 .checklist{list-style:none;padding-left:0;margin:20px 0 28px;}
 .checklist li{margin-bottom:12px;line-height:1.55;padding-left:4px;}
 .calc{margin-bottom:56px;}

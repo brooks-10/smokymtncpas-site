@@ -1,13 +1,13 @@
-/* Smoky Mountain CPAs — site.js (v4)
+/* Smoky Mountain CPAs - site.js (v4)
    Vanilla JS, no framework, no build step, one file. Three small jobs:
      1. Mobile nav toggle (moved here from the old per-page inline script).
-     2. Header scroll behavior — adds a shrink+shadow class past a small
+     2. Header scroll behavior - adds a shrink+shadow class past a small
         scroll threshold. Pure class toggling; all the actual look lives
         in CSS.
-     3. Scroll-reveal — fade+rise content once, staggered within each
+     3. Scroll-reveal - fade+rise content once, staggered within each
         group, via IntersectionObserver. Entirely skipped when the visitor
         has prefers-reduced-motion set, or when IntersectionObserver isn't
-        available — content simply renders in its final state, no motion,
+        available - content simply renders in its final state, no motion,
         no penalty.
 */
 (function () {
@@ -41,7 +41,7 @@
 
     var items = [];
 
-    // Grouped content — stagger within the group (60ms per item).
+    // Grouped content - stagger within the group (60ms per item).
     var groups = document.querySelectorAll(".grid, .step-list, .hero-trustline");
     groups.forEach(function (group) {
       var children = group.querySelectorAll(":scope > *");
@@ -52,7 +52,7 @@
       });
     });
 
-    // Standalone editorial moments — no stagger needed, single item.
+    // Standalone editorial moments - no stagger needed, single item.
     document.querySelectorAll(".pull-quote blockquote, .compare-table").forEach(function (el) {
       if (el.classList.contains("reveal")) return;
       el.classList.add("reveal");
