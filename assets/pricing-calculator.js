@@ -1,9 +1,8 @@
 /* Smoky Mountain CPAs - pricing calculator (v-DRAFT)
    Built 2026-07-30 from Karen's pricing-model session. Level figures are
    DRAFT and expected to be tuned after Tuesday's follow-up. Sales Tax
-   bolt-on ($200/mo) is Brooks's confirmed real minimum, not a placeholder -
-   still kept in this same tunable block. Payroll bolt-on remains a
-   reasonable placeholder pending Karen's number. Every price lives in the
+   bolt-on is $100/mo (Brooks, 2026-08-11, dropped from $200). Payroll
+   bolt-on remains a reasonable placeholder pending Karen's number. Every price lives in the
    single PRICING block below - that's WHY it's here: to change a price,
    cadence label, or blurb, edit ONLY the block below. Nothing else in this
    file, or in index.html, needs to change - card text and the live total
@@ -50,7 +49,7 @@
     ],
     addons: [
       { id: "payroll", name: "Payroll", price: 200, blurb: "We run payroll so it's never a scramble." },
-      { id: "salestax", name: "Sales Tax", price: 200, blurb: "Multi-state sales tax tracked and filed on schedule." }
+      { id: "salestax", name: "Sales Tax", price: 100, blurb: "Multi-state sales tax tracked and filed on schedule." }
     ],
     defaultLevel: "foundations",
     calendlyUrl: "https://calendly.com/smokymountaincpas"
