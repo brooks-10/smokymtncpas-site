@@ -824,3 +824,22 @@ article{max-width:760px;margin:0 auto;padding:48px 24px;box-sizing:content-box;}
 #pricing h3{margin-top:44px;margin-bottom:14px;}
 #pricing .checklist + p{margin-top:6px;}
 section .wrap > h3 + p{margin-top:0;}
+
+/* ------------------------------------------------------------------ */
+/* Learning Center article tiles (v15) - image-topped cards, squarer  */
+/* than the old text rectangles. Photos self-hosted from the on-brand  */
+/* library. Reused .lc-* namespace so nothing else is affected.        */
+/* ------------------------------------------------------------------ */
+.lc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:8px;}
+@media(max-width:900px){.lc-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.lc-grid{grid-template-columns:1fr;}}
+.lc-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:transform .18s ease,box-shadow .18s ease;}
+.lc-card:hover{transform:translateY(-3px);box-shadow:0 16px 32px rgba(31,42,36,.13);}
+.lc-card-img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;background:var(--mist);}
+.lc-card-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1;}
+.lc-tag{font-family:var(--sans);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--maple-ink);font-weight:700;margin:0 0 9px;}
+.lc-card-body h3{font-family:var(--serif);font-size:19px;line-height:1.22;font-weight:600;color:var(--ink);margin:0 0 9px;}
+.lc-excerpt{font-family:var(--sans);font-size:14px;line-height:1.55;color:var(--muted);margin:0 0 16px;}
+.lc-card-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:13px;}
+.lc-read{color:var(--pine);font-weight:600;}
+.lc-min{color:var(--muted);}
