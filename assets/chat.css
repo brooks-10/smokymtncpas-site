@@ -20,8 +20,8 @@
   --smc-surface: #ffffff;
   --smc-panel: #FAF6EE;
   --smc-bubble-you: #F1E4D6;
-  --smc-serif: "Fraunces", Georgia, serif;
-  --smc-sans: "Schibsted Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --smc-serif: "Spectral", Georgia, serif;
+  --smc-sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --smc-radius: 14px;
   --smc-shadow: 0 4px 12px rgba(31, 42, 36, .12), 0 16px 40px rgba(31, 42, 36, .16);
 }
