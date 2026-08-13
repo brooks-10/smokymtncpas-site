@@ -843,3 +843,9 @@ section .wrap > h3 + p{margin-top:0;}
 .lc-card-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;font-family:var(--sans);font-size:13px;}
 .lc-read{color:var(--pine);font-weight:600;}
 .lc-min{color:var(--muted);}
+
+/* Learning Center graphic covers (v16) - branded color + gold icon +      */
+/* ridgeline, replacing photo thumbnails. No stock imagery.                 */
+.lc-cover{position:relative;aspect-ratio:3/2;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.lc-ico{width:76px;height:76px;position:relative;z-index:2;}
+.lc-ridge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:44px;}
