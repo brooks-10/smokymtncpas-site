@@ -67,7 +67,7 @@ html,body{width:1200px;height:630px;overflow:hidden;background:#1F2A24;}
         gtag('event', 'begin_checkout', {currency: 'USD', value: 497, item_name: 'Diagnostic Review'});
       });
     });
-    document.querySelectorAll('a[href*="calendly.com"]').forEach(function (a) {
+    document.querySelectorAll('a[href*="/book/"]').forEach(function (a) {
       a.addEventListener('click', function () {
         gtag('event', 'generate_lead', {lead_type: 'discovery_call_click'});
       });

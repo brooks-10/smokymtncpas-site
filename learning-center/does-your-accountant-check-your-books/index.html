@@ -25,7 +25,7 @@
   gtag('js', new Date());
   gtag('config', 'G-2G7BW0Y1GE');
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('a[href*="calendly.com"]').forEach(function (a) {
+    document.querySelectorAll('a[href*="/book/"]').forEach(function (a) {
       a.addEventListener('click', function () { gtag('event', 'generate_lead', {lead_type: 'discovery_call_click'}); });
     });
     document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {

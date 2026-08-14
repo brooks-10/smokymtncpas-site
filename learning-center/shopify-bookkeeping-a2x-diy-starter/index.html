@@ -31,7 +31,7 @@
         gtag('event', 'begin_checkout', {currency: 'USD', value: 497, item_name: 'Diagnostic Review'});
       });
     });
-    document.querySelectorAll('a[href*="calendly.com"]').forEach(function (a) {
+    document.querySelectorAll('a[href*="/book/"]').forEach(function (a) {
       a.addEventListener('click', function () {
         gtag('event', 'generate_lead', {lead_type: 'discovery_call_click'});
       });
@@ -174,7 +174,7 @@
     <div class="footer-col">
       <h4>Get Started</h4>
       <ul>
-        <li><a href="https://calendly.com/smokymountaincpas/30-min-discovery-call">Book a fit call</a></li>
+        <li><a href="/book/">Book a fit call</a></li>
         <li><a href="tel:+18653121203">(865) 312-1203</a></li>
         <li><a href="/#pricing">See pricing &amp; calculator</a></li>
         <li><a href="https://buy.stripe.com/9B6dRa4P57nRdZL32u00000">Buy the Diagnostic Review</a></li>
