@@ -107,7 +107,20 @@
 <section>
   <div class="wrap form-wrap">
     <div class="form-card">
-      <div id="hs-form-247032929" class="form-loading">Loading the form&hellip; if it doesn&rsquo;t appear, call us at (865)&nbsp;312-1203 or email <a href="mailto:hello@smokymtncpas.com">hello@smokymtncpas.com</a>.</div>
+      <form id="gs-form" novalidate>
+        <div class="hs-form-field"><label for="gs-first">First name *</label><input type="text" id="gs-first" name="firstName" autocomplete="given-name" required></div>
+        <div class="hs-form-field"><label for="gs-last">Last name</label><input type="text" id="gs-last" name="lastName" autocomplete="family-name"></div>
+        <div class="hs-form-field"><label for="gs-email">Email *</label><input type="email" id="gs-email" name="email" autocomplete="email" required></div>
+        <div class="hs-form-field"><label for="gs-company">Business name</label><input type="text" id="gs-company" name="company" autocomplete="organization"></div>
+        <div class="hs-form-field"><label for="gs-type">What kind of business?</label><select id="gs-type" name="businessType"><option value="">Choose one</option><option>Shopify / Ecommerce</option><option>Retail or boutique</option><option>Contractor / trades</option><option>Service business</option><option>Something else</option></select></div>
+        <div class="hs-form-field"><label for="gs-rev">Annual revenue</label><select id="gs-rev" name="annualRevenue"><option value="">Choose one</option><option>Under $100K</option><option>$100K to $250K</option><option>$250K to $500K</option><option>$500K to $1M</option><option>Over $1M</option><option>Not sure</option></select></div>
+        <div class="hs-form-field"><label for="gs-soft">What accounting software do you use?</label><input type="text" id="gs-soft" name="accountingSoftware"></div>
+        <div class="hs-form-field"><label for="gs-needs">What do you need help with?</label><textarea id="gs-needs" name="whatYouNeed"></textarea></div>
+        <div class="hs-form-field"><label for="gs-when">When do you want this handled?</label><input type="text" id="gs-when" name="timeline"></div>
+        <div class="hs-form-field"><label for="gs-tax">Are you mainly looking for tax filing?</label><select id="gs-tax" name="mainlyTaxFiling"><option value="">Choose one</option><option>No, I need bookkeeping</option><option>Yes, mainly tax filing</option></select></div>
+        <p class="hs-error-msg" id="gs-error" style="display:none;margin:0 0 10px;"></p>
+        <button type="submit" class="hs-button" id="gs-btn">Send it over</button>
+      </form>
     </div>
     <p class="small center" style="margin-top:18px;color:#6d7a6f;">We don&rsquo;t prepare or file tax returns. We keep your books tax-ready all year and work alongside your tax preparer. <a href="/why-we-dont-do-taxes/">Here&rsquo;s why &rarr;</a></p>
   </div>
@@ -182,27 +195,46 @@
 <script src="/assets/chat.js?v=3" defer></script>
 <a href="tel:+18653121203" class="sticky-call" aria-label="Call Smoky Mountain CPAs">&#9742; (865) 312-1203</a>
 <!-- HubSpot form embed -->
-<script src="https://js-na2.hsforms.net/forms/embed/v2.js" charset="utf-8"></script>
 <script>
   (function () {
-    function build() {
-      if (!window.hbspt || !hbspt.forms) { setTimeout(build, 150); return; }
-      document.getElementById('hs-form-247032929').classList.remove('form-loading');
-      hbspt.forms.create({
-        region: "na2",
-        portalId: "247032929",
-        formId: "0f8f78ee-f2e0-4878-b16a-36f2a4d22c2e",
-        target: "#hs-form-247032929",
-        onFormSubmit: function () {
-          if (typeof gtag === 'function') {
-            gtag('event', 'generate_lead', {lead_type: 'inquiry_form_submit'});
-          }
-        }
-      });
-    }
-    build();
+    var form = document.getElementById('gs-form');
+    if (!form) return;
+    var err = document.getElementById('gs-error');
+    var btn = document.getElementById('gs-btn');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.style.display = 'none';
+      var d = { form: 'get-started',
+        firstName: form.firstName.value.trim(),
+        lastName: form.lastName.value.trim(),
+        email: form.email.value.trim(),
+        company: form.company.value.trim(),
+        businessType: form.businessType.value,
+        annualRevenue: form.annualRevenue.value,
+        accountingSoftware: form.accountingSoftware.value.trim(),
+        whatYouNeed: form.whatYouNeed.value.trim(),
+        timeline: form.timeline.value.trim(),
+        mainlyTaxFiling: form.mainlyTaxFiling.value };
+      if (!d.firstName || !d.email) {
+        err.textContent = 'Please fill in your first name and email.';
+        err.style.display = 'block'; return;
+      }
+      btn.disabled = true; btn.textContent = 'Sending\u2026';
+      fetch('https://smcpas-chat.brooks-e6f.workers.dev/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (!res.ok) throw new Error(res.j && res.j.error ? res.j.error : 'err');
+          if (typeof gtag === 'function') gtag('event', 'generate_lead', { lead_type: 'inquiry_form_submit' });
+          window.location.href = '/thank-you/';
+        })
+        .catch(function (e2) {
+          btn.disabled = false; btn.textContent = 'Send it over';
+          err.textContent = (e2 && e2.message && e2.message !== 'err') ? e2.message
+            : 'Something went wrong. Call (865) 312-1203 or email hello@smokymtncpas.com.';
+          err.style.display = 'block';
+        });
+    });
   })();
 </script>
-<script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/247032929.js"></script>
 </body>
 </html>

@@ -95,7 +95,13 @@
         </ul>
       </div>
       <div class="lm-card">
-        <div id="hs-form-lm" class="form-loading">Loading the form&hellip; if it doesn&rsquo;t appear, email <a href="mailto:hello@smokymtncpas.com">hello@smokymtncpas.com</a> and we&rsquo;ll send it over.</div>
+        <form id="lm-form" novalidate>
+          <div class="hs-form-field"><label for="lm-first">First name *</label><input type="text" id="lm-first" name="firstName" autocomplete="given-name" required></div>
+          <div class="hs-form-field"><label for="lm-last">Last name</label><input type="text" id="lm-last" name="lastName" autocomplete="family-name"></div>
+          <div class="hs-form-field"><label for="lm-email">Email *</label><input type="email" id="lm-email" name="email" autocomplete="email" required></div>
+          <p class="hs-error-msg" id="lm-error" style="display:none;margin:0 0 10px;"></p>
+          <button type="submit" class="hs-button" id="lm-btn">Send me the checklist</button>
+        </form>
       </div>
     </div>
     <p class="small center" style="color:#6d7a6f;">We&rsquo;ll only email you things worth reading, and you can unsubscribe any time. We don&rsquo;t file taxes, we keep your books tax-ready all year and work alongside your tax preparer.</p>
@@ -159,18 +165,39 @@
 <script src="/assets/site.js"></script>
 <script src="/assets/chat.js?v=3" defer></script>
 <a href="tel:+18653121203" class="sticky-call" aria-label="Call Smoky Mountain CPAs">&#9742; (865) 312-1203</a>
-<script src="https://js-na2.hsforms.net/forms/embed/v2.js" charset="utf-8"></script>
 <script>
   (function () {
-    function build() {
-      if (!window.hbspt || !hbspt.forms) { setTimeout(build, 150); return; }
-      document.getElementById('hs-form-lm').classList.remove('form-loading');
-      hbspt.forms.create({ region: "na2", portalId: "247032929", formId: "a91247e8-b497-46f2-b15e-ffc40112e01b", target: "#hs-form-lm",
-        onFormSubmit: function () { if (typeof gtag === 'function') gtag('event', 'generate_lead', {lead_type: 'lead_magnet_contractor_checklist'}); } });
-    }
-    build();
+    var form = document.getElementById('lm-form');
+    if (!form) return;
+    var err = document.getElementById('lm-error');
+    var btn = document.getElementById('lm-btn');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.style.display = 'none';
+      var d = { form: 'contractor-checklist',
+        firstName: form.firstName.value.trim(),
+        lastName: form.lastName.value.trim(),
+        email: form.email.value.trim() };
+      if (!d.firstName || !d.email) {
+        err.textContent = 'Please fill in your first name and email.';
+        err.style.display = 'block'; return;
+      }
+      btn.disabled = true; btn.textContent = 'Sending\u2026';
+      fetch('https://smcpas-chat.brooks-e6f.workers.dev/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
+        .then(function (res) {
+          if (!res.ok) throw new Error(res.j && res.j.error ? res.j.error : 'err');
+          if (typeof gtag === 'function') gtag('event', 'generate_lead', { lead_type: 'lead_magnet_contractor_checklist' });
+          window.location.href = '/thank-you-download/';
+        })
+        .catch(function (e2) {
+          btn.disabled = false; btn.textContent = 'Send me the checklist';
+          err.textContent = (e2 && e2.message && e2.message !== 'err') ? e2.message
+            : 'Something went wrong. Email hello@smokymtncpas.com and we\u2019ll send it over.';
+          err.style.display = 'block';
+        });
+    });
   })();
 </script>
-<script type="text/javascript" id="hs-script-loader" async defer src="//js-na2.hs-scripts.com/247032929.js"></script>
 </body>
 </html>
