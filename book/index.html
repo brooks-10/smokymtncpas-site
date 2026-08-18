@@ -37,6 +37,23 @@
 <style>
   .book-frame{width:100%;min-height:760px;border:0;border-radius:14px;background:#fff;box-shadow:0 12px 34px rgba(31,42,36,.10);}
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1054443447207942');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 <header class="site-header">
@@ -119,7 +136,7 @@
         .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
         .then(function (res) {
           if (!res.ok) throw new Error(res.j && res.j.error ? res.j.error : 'err');
-          if (typeof gtag === 'function') gtag('event', 'generate_lead', { lead_type: 'call_fallback_form' });
+          if (typeof gtag === 'function') (typeof fbq === 'function') && fbq('track', 'Lead'); gtag('event', 'generate_lead', { lead_type: 'call_fallback_form' });
           window.location.href = '/thank-you/';
         })
         .catch(function (e2) {
