@@ -133,37 +133,44 @@ src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
 
 <section class="section" id="calculator">
   <div class="wrap">
-    <h2>Find your plan in 30 seconds</h2>
-    <div class="card" style="max-width:680px;margin:24px auto;">
-      <div style="margin-bottom:18px;">
-        <label for="tc-entity" style="font-weight:700;display:block;margin-bottom:6px;">How does your business file taxes?</label>
-        <select id="tc-entity" style="width:100%;padding:10px;font-size:16px;">
-          <option value="">Choose one</option>
-          <option value="schc">Sole proprietor or single-member LLC</option>
-          <option value="scorp">S corporation</option>
-          <option value="pship">Partnership or multi-member LLC</option>
-          <option value="ccorp">C corporation</option>
-          <option value="none">No business, personal return only</option>
-          <option value="unsure">Not sure</option>
-        </select>
+    <h2>What would this cost? Find out in 30 seconds</h2>
+    <div class="card" style="max-width:720px;margin:24px auto;">
+      <div id="tc-path" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px;">
+        <button type="button" class="btn" id="tc-path-prep" style="flex:1;min-width:200px;">Just tax prep for this year</button>
+        <button type="button" class="btn" id="tc-path-monthly" style="flex:1;min-width:200px;">The full monthly relationship</button>
       </div>
-      <div id="tc-personal-wrap" style="margin-bottom:18px;display:none;">
-        <label style="font-weight:700;"><input type="checkbox" id="tc-personal" checked> Include my personal return and quarterly tax check-ins</label>
+      <div id="tc-q" style="display:none;">
+        <div style="margin-bottom:18px;">
+          <label for="tc-entity" style="font-weight:700;display:block;margin-bottom:6px;">How does your business file taxes?</label>
+          <select id="tc-entity" style="width:100%;padding:10px;font-size:16px;">
+            <option value="">Choose one</option>
+            <option value="schc">Sole proprietor or single-member LLC</option>
+            <option value="scorp">S corporation</option>
+            <option value="pship">Partnership or multi-member LLC</option>
+            <option value="ccorp">C corporation</option>
+            <option value="none">No business, personal return only</option>
+            <option value="unsure">Not sure</option>
+          </select>
+        </div>
+        <div id="tc-personal-wrap" style="margin-bottom:18px;display:none;">
+          <label style="font-weight:700;"><input type="checkbox" id="tc-personal" checked> <span id="tc-personal-lbl">Include my personal return</span></label>
+        </div>
+        <div id="tc-flags-wrap" style="margin-bottom:18px;display:none;">
+          <p style="font-weight:700;margin-bottom:6px;">Do any of these apply?</p>
+          <label style="display:block;"><input type="checkbox" class="tc-flag"> We operate in more than one state</label>
+          <label style="display:block;"><input type="checkbox" class="tc-flag"> Significant crypto activity</label>
+          <label style="display:block;"><input type="checkbox" class="tc-flag"> A trust or estate is involved</label>
+          <label style="display:block;"><input type="checkbox" class="tc-flag"> Unfiled prior-year returns</label>
+        </div>
+        <div id="tc-addons-wrap" style="margin-bottom:18px;display:none;">
+          <p style="font-weight:700;margin-bottom:6px;">Add-ons</p>
+          <label style="display:block;"><input type="checkbox" id="tc-payroll"> Payroll (+$200/mo)</label>
+          <label style="display:block;"><input type="checkbox" id="tc-pf"> Profit First cash system (+$200/mo)</label>
+          <label style="display:block;"><input type="checkbox" id="tc-entity2"> A second entity (+$150/mo)</label>
+        </div>
+        <div id="tc-result" style="border-top:2px solid #ccc;padding-top:16px;display:none;"></div>
+        <p class="small" style="margin-top:12px;color:#777;">Estimated starting prices. Your formal quote comes from the diagnostic, where we read your actual return and books.</p>
       </div>
-      <div id="tc-flags-wrap" style="margin-bottom:18px;display:none;">
-        <p style="font-weight:700;margin-bottom:6px;">Do any of these apply?</p>
-        <label style="display:block;"><input type="checkbox" class="tc-flag"> We operate in more than one state</label>
-        <label style="display:block;"><input type="checkbox" class="tc-flag"> Significant crypto activity</label>
-        <label style="display:block;"><input type="checkbox" class="tc-flag"> A trust or estate is involved</label>
-        <label style="display:block;"><input type="checkbox" class="tc-flag"> Unfiled prior-year returns</label>
-      </div>
-      <div id="tc-addons-wrap" style="margin-bottom:18px;display:none;">
-        <p style="font-weight:700;margin-bottom:6px;">Add-ons</p>
-        <label style="display:block;"><input type="checkbox" id="tc-payroll"> Payroll (+$200/mo)</label>
-        <label style="display:block;"><input type="checkbox" id="tc-pf"> Profit First cash system (+$200/mo)</label>
-        <label style="display:block;"><input type="checkbox" id="tc-entity2"> A second entity (+$150/mo)</label>
-      </div>
-      <div id="tc-result" style="border-top:2px solid #ccc;padding-top:16px;display:none;"></div>
     </div>
   </div>
 </section>
@@ -187,28 +194,52 @@ src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
 
 <script>
 (function(){
+  var mode=null;
   var entity=document.getElementById('tc-entity');
-  var pWrap=document.getElementById('tc-personal-wrap'), fWrap=document.getElementById('tc-flags-wrap'), aWrap=document.getElementById('tc-addons-wrap'), res=document.getElementById('tc-result');
+  var q=document.getElementById('tc-q'), pWrap=document.getElementById('tc-personal-wrap'), fWrap=document.getElementById('tc-flags-wrap'), aWrap=document.getElementById('tc-addons-wrap'), res=document.getElementById('tc-result');
+  var bPrep=document.getElementById('tc-path-prep'), bMon=document.getElementById('tc-path-monthly');
+  function setMode(m){ mode=m; q.style.display='block';
+    bPrep.style.opacity=(m==='prep')?'1':'0.45'; bMon.style.opacity=(m==='monthly')?'1':'0.45'; calc(); }
+  bPrep.onclick=function(){setMode('prep')}; bMon.onclick=function(){setMode('monthly')};
+  function gate(){ return [].slice.call(document.querySelectorAll('.tc-flag')).some(function(c){return c.checked}); }
+  function diag(msg){ res.innerHTML='<p><strong>'+msg+'</strong></p><p><a class="btn" href="/diagnostic/">Book the Diagnostic</a></p>'; }
   function calc(){
-    var e=entity.value; if(!e){res.style.display='none';return;}
-    var flags=[].slice.call(document.querySelectorAll('.tc-flag')).some(function(c){return c.checked});
-    pWrap.style.display=(e==='schc'||e==='scorp'||e==='pship'||e==='ccorp')?'block':'none';
-    fWrap.style.display=(e!=='')?'block':'none';
-    aWrap.style.display=(e!==''&&e!=='none'&&e!=='unsure')?'block':'none';
+    var e=entity.value;
+    fWrap.style.display=e?'block':'none';
+    pWrap.style.display=(e&&e!=='none'&&e!=='unsure')?'block':'none';
+    aWrap.style.display=(mode==='monthly'&&e&&e!=='none'&&e!=='unsure')?'block':'none';
+    if(!e||!mode){res.style.display='none';return;}
     res.style.display='block';
-    if(e==='unsure'){res.innerHTML='<p><strong>Let us sort it out together.</strong> Entity choice is half the tax conversation. The diagnostic call answers it with your real numbers.</p><p><a class="btn" href="/diagnostic/">Book the Diagnostic</a></p>';return;}
-    if(flags){res.innerHTML='<p><strong>Your situation needs a conversation, not a calculator.</strong> Multi-state, crypto, trusts, or catch-up filings deserve real scoping. Book the diagnostic and we will map it honestly, including telling you if a specialist fits better.</p><p><a class="btn" href="/diagnostic/">Book the Diagnostic</a></p>';return;}
-    if(e==='none'){res.innerHTML='<p><strong>The Individual Tax Membership.</strong> Your return prepared and filed, a mid-year checkup with a withholding review, and we handle IRS letters. <strong>$795/year</strong>, or $1,195 with rentals or K-1s.</p><p><a class="btn" href="/get-started/">Get Started</a></p>';return;}
+    if(e==='unsure'){diag('Let us sort the entity question out together. It is half the tax conversation, and the diagnostic answers it with your real numbers.');return;}
+    if(gate()){diag('Your situation needs a conversation, not a calculator. Multi-state, crypto, trusts, or catch-up years deserve honest scoping, including telling you if a specialist fits better.');return;}
+    if(e==='none'){
+      res.innerHTML='<p style="font-size:20px;margin-bottom:4px;"><strong>The Individual Tax Membership</strong></p><p><strong>$795/year</strong> (or $1,195 with rentals or K-1s): your return prepared and filed, a mid-year checkup with a withholding review, and we handle any IRS letters. Renews each January.</p><p><a class="btn" href="/get-started/">Get Started</a></p>';
+      return;
+    }
     var personal=document.getElementById('tc-personal').checked;
+    if(mode==='prep'){
+      var price, what;
+      if(e==='schc'){price=850; what='Schedule C business return and your personal 1040, prepared and filed together';}
+      else if(e==='ccorp'){price=1600; what='Form 1120 corporate return, prepared and filed';}
+      else {price=1400; what=(e==='scorp'?'Form 1120-S':'Form 1065')+' business return, prepared and filed';}
+      if(personal && e!=='schc'){price+=550; what+=', plus your personal 1040';}
+      var mtier=(e==='schc'&&!personal)?['Foundations',900]:(personal||e==='schc')?['Growth',1250]:['Foundations',950];
+      if(e==='ccorp'){mtier=['Partner',1800];}
+      res.innerHTML='<div style="display:flex;gap:14px;flex-wrap:wrap;">'
+        +'<div style="flex:1;min-width:240px;border:1px solid #ccc;border-radius:8px;padding:14px;"><p style="font-weight:700;margin-bottom:2px;">This year, prep only</p><p style="font-size:22px;font-weight:700;">$'+price.toLocaleString()+'</p><p class="small">'+what+'. From records you provide. Estimated starting price.</p></div>'
+        +'<div style="flex:1;min-width:240px;border:2px solid #2a6; border-radius:8px;padding:14px;"><p style="font-weight:700;margin-bottom:2px;">Or the whole thing, monthly</p><p style="font-size:22px;font-weight:700;">'+mtier[0]+' &middot; $'+mtier[1].toLocaleString()+'/mo</p><p class="small">Your books done and CPA-reviewed, this return <strong>included</strong>, quarterly tax check-ins, estimates handled, and a plan. The return becomes the smallest thing you get.</p></div>'
+        +'</div><p style="margin-top:12px;"><a class="btn" href="/diagnostic/">Book the Diagnostic</a></p>';
+      return;
+    }
     var base, tier;
     if(e==='ccorp'){tier='Partner';base=1800;}
     else if(personal){tier='Growth';base=1250;}
-    else {tier='Foundations';base=900;}
-    if((e==='scorp'||e==='pship')&&!personal){tier='Foundations';base=950;}
+    else if(e==='schc'){tier='Foundations';base=900;}
+    else {tier='Foundations';base=950;}
     var add=0, lines=[];
     if(document.getElementById('tc-payroll').checked){add+=200;lines.push('payroll');}
     if(document.getElementById('tc-pf').checked){add+=200;lines.push('Profit First cash system');}
-    if(document.getElementById('tc-entity2').checked){add+=150;lines.push('second entity');}
+    if(document.getElementById('tc-entity2').checked){add+=150;lines.push('a second entity');}
     var total=base+add;
     var inc = tier==='Partner' ? 'books, your business and personal returns, quarterly tax check-ins, planning twice a year, bi-weekly meetings' : tier==='Growth' ? 'books, your business and personal returns, quarterly tax check-ins with estimates handled, monthly meetings' : 'books, your business return, an annual tax check, quarterly meetings';
     res.innerHTML='<p style="font-size:22px;margin-bottom:4px;"><strong>'+tier+' &middot; $'+total.toLocaleString()+'/mo</strong></p><p>Includes '+inc+(lines.length?', plus '+lines.join(', '):'')+'. One price, tax included, no April invoice.</p><p><a class="btn" href="/diagnostic/">Book the Diagnostic to confirm your fit</a></p>';
