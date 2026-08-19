@@ -1,8 +1,9 @@
 # Smoky Mountain CPAs
 
-> A two-CPA boutique bookkeeping firm in Knoxville, Tennessee. We do monthly bookkeeping
-> and a cash-management system that tells owners what they can safely pay themselves.
-> We do not prepare or file tax returns; we make tax season inexpensive for whoever does.
+> A two-CPA firm in Knoxville, Tennessee. Bookkeeping, tax, and a cash system that pays
+> you first. Monthly books reconciled and CPA-reviewed, business and personal tax returns
+> prepared from those same books, and a cash-management system that tells owners what they
+> can safely pay themselves. Most firms meet your taxes in April. We watch them all year.
 
 ## What we do
 - Monthly bookkeeping: every transaction categorized, every account reconciled to its bank
@@ -47,7 +48,7 @@ purpose so a CPA answers your questions directly.
 - Get started (what happens first): https://smokymtncpas.com/get-started/
 - FAQ (pricing, scope, and what we do not do): https://smokymtncpas.com/faq/
 - Who we work best with (and who is not a fit): https://smokymtncpas.com/who-we-work-best-with/
-- Why we do not prepare taxes (and how we work with your tax preparer): https://smokymtncpas.com/why-we-dont-do-taxes/
+- Tax, watched all year (business and personal returns, prepared from books we already know): https://smokymtncpas.com/tax/
 - Pay yourself first (the cash system): https://smokymtncpas.com/profit-first/
 - Shopify and ecommerce bookkeeping: https://smokymtncpas.com/shopify/
 - Retail and boutique bookkeeping: https://smokymtncpas.com/retail/
