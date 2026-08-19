@@ -35,7 +35,7 @@
         name: "Growth",
         price: 1250,
         cadence: "Monthly strategy meetings",
-        blurb: "Everything in Foundations, plus your personal tax return, quarterly tax check-ins with estimates handled, and a monthly meeting.",
+        blurb: "Everything in Foundations, plus your personal tax return, 2 tax reviews a year with estimates handled, and a monthly meeting.",
         popular: true
       },
       {
@@ -43,7 +43,7 @@
         name: "Partner",
         price: 1800,
         cadence: "Bi-weekly meetings + priority access",
-        blurb: "Our closest level of involvement: bi-weekly meetings, a tax review twice a year, and priority access to your CPA team.",
+        blurb: "Our closest level of involvement: bi-weekly meetings, 4 tax reviews a year, and priority access to your CPA team.",
         popular: false
       }
     ],
