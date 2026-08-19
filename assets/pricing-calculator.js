@@ -25,25 +25,25 @@
       {
         id: "foundations",
         name: "Foundations",
-        price: 800,
+        price: 900,
         cadence: "Quarterly strategy meetings",
-        blurb: "Clean books every month, plus a quarterly sit-down on your numbers and your Profit First allocations.",
+        blurb: "Clean books every month, your business tax return included, plus a quarterly sit-down on your numbers and your Profit First allocations.",
         popular: false
       },
       {
         id: "growth",
         name: "Growth",
-        price: 1000,
+        price: 1250,
         cadence: "Monthly strategy meetings",
-        blurb: "Everything in Foundations, with a monthly meeting so allocations and decisions never drift for long.",
+        blurb: "Everything in Foundations, plus your personal tax return, quarterly tax check-ins with estimates handled, and a monthly meeting.",
         popular: true
       },
       {
         id: "partner",
         name: "Partner",
-        price: 1500,
+        price: 1800,
         cadence: "Bi-weekly meetings + priority access",
-        blurb: "Our closest level of involvement: bi-weekly meetings and priority access to your CPA team.",
+        blurb: "Our closest level of involvement: bi-weekly meetings, tax planning twice a year, and priority access to your CPA team.",
         popular: false
       }
     ],
