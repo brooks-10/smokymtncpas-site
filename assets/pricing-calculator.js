@@ -43,7 +43,7 @@
         name: "Partner",
         price: 1800,
         cadence: "Bi-weekly meetings + priority access",
-        blurb: "Our closest level of involvement: bi-weekly meetings, tax planning twice a year, and priority access to your CPA team.",
+        blurb: "Our closest level of involvement: bi-weekly meetings, a tax review twice a year, and priority access to your CPA team.",
         popular: false
       }
     ],
