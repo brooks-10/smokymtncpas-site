@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
 <link rel="alternate icon" href="/assets/images/EST.webp">
-<link rel="stylesheet" href="/assets/style.css?v=16">
+<link rel="stylesheet" href="/assets/style.css?v=17">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2G7BW0Y1GE"></script>
 <script>
@@ -234,6 +234,7 @@ src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
       e.preventDefault();
       err.style.display = 'none';
       var d = { form: 'get-started',
+        intent: (new URLSearchParams(location.search)).get('intent') || '',
         firstName: form.firstName.value.trim(),
         lastName: form.lastName.value.trim(),
         email: form.email.value.trim(),
@@ -263,6 +264,19 @@ src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
           err.style.display = 'block';
         });
     });
+  })();
+</script>
+<script>
+  (function () {
+    if ((new URLSearchParams(location.search)).get('intent') !== 'tax-return') return;
+    var eb = document.querySelector('.hero .eyebrow');
+    var h1 = document.querySelector('.hero h1');
+    var pp = document.querySelector('.hero h1 + p');
+    if (eb) eb.textContent = 'Tax at Smoky Mountain CPAs';
+    if (h1) h1.textContent = 'Start your return.';
+    if (pp) pp.textContent = 'Tell us a little about you and your business. It goes straight to Brooks and Caroline, the two CPAs who prepare and file the return. We reply with a short document checklist, a confirmed quote after we read last year\u2019s return, and your live return tracker.';
+    var sel = document.getElementById('gs-tax');
+    if (sel) { sel.value = 'Yes, mainly tax filing'; }
   })();
 </script>
 </body>

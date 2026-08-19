@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
 <link rel="alternate icon" href="/assets/images/EST.webp">
-<link rel="stylesheet" href="/assets/style.css?v=16">
+<link rel="stylesheet" href="/assets/style.css?v=17">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2G7BW0Y1GE"></script>
 <script>
@@ -272,7 +272,7 @@ src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
       lines.map(function(l){return '<li>'+l+'</li>'}).join('')+'</ul><p style="margin:14px 0 0;"><a class="btn" href="'+ctaHref+'">'+ctaText+'</a></p></div>';
   }
   function talk(msg){
-    return '<div class="tc-res"><p class="tc-res-name">Let us scope this one honestly</p><p style="margin:8px 0 0;">'+msg+'</p><p style="margin:14px 0 0;"><a class="btn" href="/get-started/">Tell us about it</a></p></div>';
+    return '<div class="tc-res"><p class="tc-res-name">Let us scope this one honestly</p><p style="margin:8px 0 0;">'+msg+'</p><p style="margin:14px 0 0;"><a class="btn" href="/get-started/?intent=tax-return">Tell us about it</a></p></div>';
   }
   function calc(){
     var e=entity.value;
@@ -282,14 +282,14 @@ src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
     if(!e){res.innerHTML='';return;}
     if(gate()&&e!=='none'){res.innerHTML=talk('Multi-state, crypto, trusts, or catch-up years deserve real scoping, not a price list. We will give you a straight answer, including if a specialist fits better.');return;}
     if(mode==='prep'){
-      if(e==='schc'){res.innerHTML=card(money(750),' this year','Sole prop return',['Your Schedule C business return','Your personal 1040, prepared and filed together','Live return tracker, documents in to accepted'],'/get-started/','Start your return');}
-      else if(e==='scorp'||e==='pship'){res.innerHTML=card(money(1250),' this year',(e==='scorp'?'S corporation return':'Partnership return'),['Your '+(e==='scorp'?'1120-S':'1065')+' business return','Your personal 1040 included, no separate charge','Live return tracker, documents in to accepted'],'/get-started/','Start your return');}
-      else if(e==='ccorp'){res.innerHTML=card(money(1500),' this year','C corporation return',['Your Form 1120 corporate return','Prepared and filed by a licensed CPA','Live return tracker, documents in to accepted'],'/get-started/','Start your return');}
+      if(e==='schc'){res.innerHTML=card(money(750),' this year','Sole prop return',['Your Schedule C business return','Your personal 1040, prepared and filed together','Live return tracker, documents in to accepted'],'/get-started/?intent=tax-return','Start your return');}
+      else if(e==='scorp'||e==='pship'){res.innerHTML=card(money(1250),' this year',(e==='scorp'?'S corporation return':'Partnership return'),['Your '+(e==='scorp'?'1120-S':'1065')+' business return','Your personal 1040 included, no separate charge','Live return tracker, documents in to accepted'],'/get-started/?intent=tax-return','Start your return');}
+      else if(e==='ccorp'){res.innerHTML=card(money(1500),' this year','C corporation return',['Your Form 1120 corporate return','Prepared and filed by a licensed CPA','Live return tracker, documents in to accepted'],'/get-started/?intent=tax-return','Start your return');}
       else if(e==='none'){var rich=document.getElementById('tc-rentals').checked;
-        res.innerHTML=card(money(rich?995:595),' a year','Individual Tax Membership',[ 'Your personal return, prepared and filed', rich?'Rentals and K-1s included':'A mid-year checkup with a withholding review','We handle IRS letters when they show up'],'/get-started/','Start your return');}
+        res.innerHTML=card(money(rich?995:595),' a year','Individual Tax Membership',[ 'Your personal return, prepared and filed', rich?'Rentals and K-1s included':'A mid-year checkup with a withholding review','We handle IRS letters when they show up'],'/get-started/?intent=tax-return','Start your return');}
       else {res.innerHTML=talk('Not sure how you file is a fine answer. Send us last year\u2019s return and we will tell you exactly what you are and what it costs.');}
     } else {
-      if(e==='none'){res.innerHTML=card(money(595),' a year','Individual Tax Membership',['The monthly plans are built around business books','For a personal return only, the membership is the right fit','Your return, a mid-year checkup, IRS letters handled'],'/get-started/','Get started');return;}
+      if(e==='none'){res.innerHTML=card(money(595),' a year','Individual Tax Membership',['The monthly plans are built around business books','For a personal return only, the membership is the right fit','Your return, a mid-year checkup, IRS letters handled'],'/get-started/?intent=tax-return','Get started');return;}
       var add=(document.getElementById('tc-payroll').checked?200:0)+(document.getElementById('tc-pf').checked?200:0)+(document.getElementById('tc-entity2').checked?150:0);
       var lines=['Foundations '+money(900+add)+'/mo: CPA-reviewed books, quarterly meetings, your business return included',
                  'Growth '+money(1250+add)+'/mo: adds your personal return and quarterly tax check-ins',
