@@ -849,3 +849,8 @@ section .wrap > h3 + p{margin-top:0;}
 .lc-cover{position:relative;aspect-ratio:3/2;overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .lc-ico{width:76px;height:76px;position:relative;z-index:2;}
 .lc-ridge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:44px;}
+
+/* Quiet router: sends return-only visitors to /tax/ without giving tax the homepage lead. */
+.tax-router{margin:26px 0 4px;padding:15px 20px;background:var(--mist,#F1ECE1);border-left:3px solid var(--maple,#C4622D);border-radius:0 8px 8px 0;}
+.tax-router p{margin:0;font-size:15.5px;}
+.tax-router a{font-weight:600;white-space:nowrap;}
