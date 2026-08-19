@@ -854,3 +854,5 @@ section .wrap > h3 + p{margin-top:0;}
 .tax-router{margin:26px 0 4px;padding:15px 20px;background:var(--mist,#F1ECE1);border-left:3px solid var(--maple,#C4622D);border-radius:0 8px 8px 0;}
 .tax-router p{margin:0;font-size:15.5px;}
 .tax-router a{font-weight:600;white-space:nowrap;}
+
+.eyebrow.center-block{display:block;text-align:center;}
