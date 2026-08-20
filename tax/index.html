@@ -304,8 +304,9 @@ src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
   function money(n){return '$'+n.toLocaleString('en-US');}
   function gate(){ return [].slice.call(document.querySelectorAll('.tc-flag')).some(function(c){return c.checked}); }
   function card(price, per, name, lines, ctaHref, ctaText, startingAt){
+    var all=lines.concat(['<strong>$1 Million Tax Audit Defense</strong> included on every return, at no extra cost']);
     return '<div class="tc-res"><p class="tc-res-name">'+name+'</p>'+(startingAt?'<p class="tc-res-startingat">Starting at</p>':'')+'<p class="tc-res-price">'+price+'<span class="tc-res-per">'+per+'</span></p><ul class="tc-res-list">'+
-      lines.map(function(l){return '<li>'+l+'</li>'}).join('')+'</ul><p style="margin:14px 0 0;"><a class="btn" href="'+ctaHref+'">'+ctaText+'</a></p></div>';
+      all.map(function(l){return '<li>'+l+'</li>'}).join('')+'</ul><p style="margin:14px 0 0;"><a class="btn" href="'+ctaHref+'">'+ctaText+'</a></p></div>';
   }
   function talk(msg){
     return '<div class="tc-res"><p class="tc-res-name">Let us scope this one honestly</p><p style="margin:8px 0 0;">'+msg+'</p><p style="margin:14px 0 0;"><a class="btn" href="/get-started/?intent=tax-return">Tell us about it</a></p></div>';
