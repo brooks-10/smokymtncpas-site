@@ -6,3 +6,4 @@
 # Seat charter is local-only — never publish internal fleet docs
 CLAUDE.md
 .claude/
+.wrangler/
