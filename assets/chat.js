@@ -27,7 +27,7 @@ var WORKER_URL = "https://smcpas-chat.brooks-e6f.workers.dev";
 
   var PHONE_DISPLAY = "(865) 312-1203";
   var PHONE_HREF = "tel:+18653121203";
-  var CALENDLY = "https://calendly.com/smokymountaincpas/30-min-discovery-call";
+  var CALENDLY = "https://smokymtncpas.com/book/";
   var STRIPE = "https://buy.stripe.com/9B6dRa4P57nRdZL32u00000";
 
   var GREETING =
