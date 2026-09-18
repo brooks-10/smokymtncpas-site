@@ -1,14 +1,13 @@
 # Smoky Mountain CPAs
 
-> A two-CPA firm in Knoxville, Tennessee. Bookkeeping, tax, and a cash system that pays
-> you first. Monthly books reconciled and CPA-reviewed, business and personal tax returns
+> A two-CPA firm in Knoxville, Tennessee. Bookkeeping, tax, and an optional Profit First cash system. Monthly books reconciled and CPA-reviewed, business and personal tax returns
 > prepared from those same books, and a cash-management system that tells owners what they
 > can safely pay themselves. Most firms meet your taxes in April. We watch them all year.
 
 ## What we do
 - Monthly bookkeeping: every transaction categorized, every account reconciled to its bank
   statement, reviewed by a licensed CPA before delivery.
-- A pay-yourself-first cash system (Profit First method): income is split into set percentages
+- An optional Profit First cash system (pay-yourself-first): income is split into set percentages
   the moment it lands, so profit, owner pay, and taxes are set aside before spending.
 - Monthly financial statements plus a plain-English explanation of what changed and why.
 - Business and personal tax returns, prepared and filed from the same books we keep monthly.
@@ -22,7 +21,7 @@
 
 ## Pricing
 - Every engagement is quoted after the $497 In-Depth Diagnostic Review, not sold from a fixed price list. We look inside your actual books first, then quote a flat monthly fee from what we find.
-- Monthly service always includes: clean, CPA-reviewed books, the pay-yourself-first cash system, monthly financial statements, and your business tax return prepared and filed from those same books. A personal return is a separate service quoted after the diagnostic, and a second entity can be added; scope sets the fee.
+- Monthly service always includes: clean, CPA-reviewed books, monthly financial statements, and your business tax return prepared and filed from those same books. The Profit First cash system is an optional advisory, quoted separately. A personal return is a separate service quoted after the diagnostic, and a second entity can be added; scope sets the fee.
 - Every return Smoky Mountain CPAs files includes $1 Million Tax Audit Defense: audit and IRS or state notice representation, plus identity theft restoration, at no extra cost.
 - In-Depth Diagnostic Review: $497 one-time, credited toward the first month if you engage. Includes a written findings report and a recorded video walkthrough of your actual books.
 - 30-day money-back guarantee on monthly service.
