@@ -1,0 +1,31 @@
+[
+  {
+    "id": 9001,
+    "title": "Tennessee Business Tax Basics for Small Shops",
+    "slug": "tennessee-business-tax-basics",
+    "meta_description": "What the Tennessee business tax is, who files it, and how clean monthly books make the return simple.",
+    "excerpt": "Who owes Tennessee business tax, when it is due, and how to keep the numbers ready all year.",
+    "hero_image_url": "https://media.babylovegrowth.ai/organization-56274/hero-9001.png",
+    "seedKeyword": "tennessee business tax",
+    "keywords": ["tennessee business tax", "small business tax tennessee"],
+    "languageCode": "en",
+    "created_at": "2026-09-28T14:02:11Z",
+    "published_url": null,
+    "orgWebsite": "smokymtncpas.com",
+    "faqJsonLd": {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Who files Tennessee business tax?", "acceptedAnswer": {"@type": "Answer", "text": "Most businesses with Tennessee sales above the filing threshold. Check the current threshold with the Department of Revenue."}}]},
+    "content_html": "<h1>Tennessee Business Tax Basics for Small Shops</h1><p>Tennessee business tax is a tax on gross receipts — not profit.</p><img src=\"https://media.babylovegrowth.ai/organization-56274/inline-1.png\" alt=\"Chart\"><h2>Who files</h2><p onclick=\"alert(1)\">Most shops with sales above the threshold.</p><script>alert('x')</script><p>Made with <a href=\"https://babylovegrowth.ai\">BabyLoveGrowth</a></p><p>See <a href=\"https://www.babylovegrowth.ai/blog/x\">this guide</a> for more.</p>",
+    "content_markdown": "# Tennessee Business Tax Basics for Small Shops\n\nTennessee business tax is a tax on gross receipts."
+  },
+  {
+    "id": 9002,
+    "title": "How to Set Aside Cash for Taxes All Year",
+    "slug": "set-aside-cash-for-taxes",
+    "meta_description": "Duplicate of an existing page; the pipeline must skip it.",
+    "excerpt": "Existing slug.",
+    "keywords": [],
+    "languageCode": "en",
+    "created_at": "2026-09-27T10:00:00Z",
+    "content_html": "<p>Should never be written.</p>",
+    "content_markdown": "Should never be written."
+  }
+]
