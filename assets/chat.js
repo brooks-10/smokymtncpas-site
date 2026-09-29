@@ -25,7 +25,7 @@ var WORKER_URL = "https://smcpas-chat.brooks-e6f.workers.dev";
 
   /* ---- configuration ---- */
 
-  var CALENDLY = "https://smokymtncpas.com/book/";
+  var CALENDLY = "https://calendly.com/smokymountaincpas/30-min-discovery-call";
 
   var GREETING =
     "Ask anything about how we work, what it costs, or whether we're a fit. " +
