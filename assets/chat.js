@@ -25,19 +25,15 @@ var WORKER_URL = "https://smcpas-chat.brooks-e6f.workers.dev";
 
   /* ---- configuration ---- */
 
-  var PHONE_DISPLAY = "(865) 312-1203";
-  var PHONE_HREF = "tel:+18653121203";
   var CALENDLY = "https://smokymtncpas.com/book/";
-  var STRIPE = "https://buy.stripe.com/9B6dRa4P57nRdZL32u00000";
 
   var GREETING =
     "Ask anything about how we work, what it costs, or whether we're a fit. " +
     "For anything about your own books, a CPA is better than I am, and the call is free.";
 
   var ERROR_TEXT =
-    "I'm having trouble right now. Call " +
-    PHONE_DISPLAY +
-    " or book a call and a CPA will pick up.";
+    "I'm having trouble right now. Book a call or email brooks@smokymountaincpas.com " +
+    "and a CPA will get back to you.";
 
   var MAX_CHARS = 1200; // keep in step with MAX_MESSAGE_CHARS on the Worker
   var MAX_STORED = 24; // keep in step with MAX_MESSAGES on the Worker
@@ -95,11 +91,6 @@ var WORKER_URL = "https://smcpas-chat.brooks-e6f.workers.dev";
         trailing
       );
     });
-
-    html = html.replace(
-      /\(865\)\s?312-1203/g,
-      '<a href="' + PHONE_HREF + '">' + PHONE_DISPLAY + "</a>",
-    );
 
     return html.replace(/\n/g, "<br>");
   }
@@ -205,10 +196,8 @@ var WORKER_URL = "https://smcpas-chat.brooks-e6f.workers.dev";
   note.innerHTML =
     "General information only, not tax or financial advice. Please don't send account " +
     'numbers or logins here. Prefer a person? <a href="' +
-    PHONE_HREF +
-    '">' +
-    PHONE_DISPLAY +
-    "</a>.";
+    CALENDLY +
+    '">Book a call</a>.';
 
   panel.appendChild(head);
   panel.appendChild(log);
@@ -266,9 +255,6 @@ var WORKER_URL = "https://smcpas-chat.brooks-e6f.workers.dev";
       // Mirror the site-wide conversion events so chat traffic lands in the
       // same GA4 funnels as the page CTAs.
       if (tag === "book_call") track("generate_lead", { lead_type: "discovery_call_click" });
-      if (tag === "diagnostic")
-        track("begin_checkout", { currency: "USD", value: 497, item_name: "Diagnostic Review" });
-      if (tag === "phone") track("contact", { contact_type: "phone_click" });
     });
     return a;
   }
@@ -287,7 +273,6 @@ var WORKER_URL = "https://smcpas-chat.brooks-e6f.workers.dev";
   function renderCta() {
     var row = el("div", "smc-chat-cta");
     row.appendChild(ctaLink("Book a free 30-minute call", CALENDLY, "book_call"));
-    row.appendChild(ctaLink("Diagnostic Review, $497", STRIPE, "diagnostic"));
     log.appendChild(row);
     scrollDown();
   }
@@ -295,7 +280,7 @@ var WORKER_URL = "https://smcpas-chat.brooks-e6f.workers.dev";
   /* Tappable starter questions - shown until the visitor sends anything. */
   var STARTERS = [
     "How much does monthly bookkeeping cost?",
-    "What's included in the $497 Diagnostic Review?",
+    "What happens on the free 30-minute call?",
     "Do you work with businesses like mine?",
     "My books are a mess. Can you clean them up?",
     "Do you file tax returns?",
@@ -492,7 +477,6 @@ var WORKER_URL = "https://smcpas-chat.brooks-e6f.workers.dev";
       // the visitor should be able to retry with a clean history.
       var node = addBubble("error", errorText);
       var row = el("div", "smc-chat-cta");
-      row.appendChild(ctaLink("Call " + PHONE_DISPLAY, PHONE_HREF, "phone"));
       row.appendChild(ctaLink("Book a call", CALENDLY, "book_call"));
       node.appendChild(row);
       scrollDown();
