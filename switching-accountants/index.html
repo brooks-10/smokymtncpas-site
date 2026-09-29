@@ -20,6 +20,29 @@
 <link rel="stylesheet" href="/assets/style.css?v=21">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-2G7BW0Y1GE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-2G7BW0Y1GE');
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('a[href^="https://buy.stripe.com"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        gtag('event', 'begin_checkout', {currency: 'USD', value: 497, item_name: 'Diagnostic Review'});
+      });
+    });
+    document.querySelectorAll('a[href*="/book/"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        (typeof fbq === 'function') && fbq('track', 'Lead'); gtag('event', 'generate_lead', {lead_type: 'discovery_call_click'});
+      });
+    });
+    document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        gtag('event', 'contact', {contact_type: 'phone_click'});
+      });
+    });
+  });
+</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "AccountingService", "name": "Smoky Mountain CPAs", "url": "https://smokymtncpas.com/", "telephone": "+1-865-312-1203", "priceRange": "$$", "description": "Two-CPA boutique firm in Knoxville, Tennessee. Monthly bookkeeping reconciled to the statement and CPA-reviewed, and business and personal tax preparation with year-round planning, for real estate investors, ecommerce and retail sellers, and small businesses.", "address": {"@type": "PostalAddress", "addressLocality": "Knoxville", "addressRegion": "TN", "addressCountry": "US"}, "areaServed": [{"@type": "City", "name": "Knoxville"}, {"@type": "City", "name": "Maryville"}, {"@type": "City", "name": "Oak Ridge"}, {"@type": "City", "name": "Sevierville"}, {"@type": "City", "name": "Farragut"}, {"@type": "City", "name": "Alcoa"}, {"@type": "City", "name": "Lenoir City"}, {"@type": "City", "name": "Clinton"}, {"@type": "City", "name": "Pigeon Forge"}, {"@type": "City", "name": "Gatlinburg"}, {"@type": "City", "name": "Seymour"}, {"@type": "State", "name": "Tennessee"}, {"@type": "Country", "name": "United States"}], "geo": {"@type": "GeoCoordinates", "latitude": "35.9606", "longitude": "-83.9207"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "17:00"}], "image": "https://smokymtncpas.com/assets/images/og-v4.png", "logo": "https://smokymtncpas.com/assets/images/og-v4.png", "founder": [{"@type": "Person", "name": "Brooks McLean", "jobTitle": "CPA, Founder, Certified Profit First Professional"}, {"@type": "Person", "name": "Caroline McLean", "jobTitle": "CPA, Partner"}], "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "12"}, "knowsAbout": ["Shopify bookkeeping", "ecommerce bookkeeping", "marketplace facilitator sales tax", "inventory accounting for retail", "bookkeeping for contractors and trades", "Profit First cash management", "bank reconciliation", "QuickBooks Online", "bookkeeping for real estate investors", "rental property bookkeeping"], "sameAs": ["https://www.youtube.com/@smokymountaincpas", "https://www.instagram.com/smoky_mountain_cpas/", "https://www.linkedin.com/in/brooks-mclean-cpa-80056980", "https://www.facebook.com/profile.php?id=61569142611879"]}</script>
 <!-- Microsoft Clarity (heatmaps + session recordings) -->
 <script type="text/javascript">
@@ -48,7 +71,7 @@ src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 </head>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I switch accountants in the middle of the year?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. There is no rule that ties you to a firm for a calendar or fiscal year. Mid-year is often the easiest time, because nothing is due and both firms have room to do the handoff properly. The hardest time to move is March, when everyone is buried."}}, {"@type": "Question", "name": "Do I lose my history if I leave?", "acceptedAnswer": {"@type": "Answer", "text": "No. Your books and your records are yours. A QuickBooks Online file transfers by changing the accountant user, which takes minutes and keeps every transaction, reconciliation and attachment intact. Your prior-year returns are yours as well."}}, {"@type": "Question", "name": "What am I entitled to ask my current accountant for?", "acceptedAnswer": {"@type": "Answer", "text": "Your books, your filed returns, your depreciation schedules, and your general ledger. Under AICPA standards a member must return your own records on request, even if there is a fee dispute. Work product they created may be treated differently, which is why the specific list matters."}}, {"@type": "Question", "name": "Do I have to tell my current accountant why I am leaving?", "acceptedAnswer": {"@type": "Answer", "text": "No. A short note saying you are moving your accounting and asking where to send the transfer request is enough. You do not owe an explanation, and most of the awkwardness people expect never happens."}}, {"@type": "Question", "name": "Is it worth switching if my returns have been filed on time?", "acceptedAnswer": {"@type": "Answer", "text": "On time is the floor, not the service. The question is whether anyone told you what the numbers meant before the year closed, when you could still do something about them. If the only contact you have is a return in April, you are paying for compliance and getting nothing else."}}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to switch accountants, and when you should", "description": "You can change accountants any time of year, and you own your records. What to ask for, how to hand off mid-year without losing history, and how to tell if your current CPA is actually the problem. From two licensed CPAs in Knoxville, TN.", "author": {"@type": "Organization", "name": "Smoky Mountain CPAs"}, "publisher": {"@type": "Organization", "name": "Smoky Mountain CPAs"}, "datePublished": "2026-08-31", "dateModified": "2026-08-31", "mainEntityOfPage": "https://smokymtncpas.com/switching-accountants/"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "How to switch accountants, and when you should", "image": "https://smokymtncpas.com/assets/images/og-v4.png", "description": "You can change accountants any time of year, and you own your records. What to ask for, how to hand off mid-year without losing history, and how to tell if your current CPA is actually the problem. From two licensed CPAs in Knoxville, TN.", "author": {"@type": "Organization", "name": "Smoky Mountain CPAs"}, "publisher": {"@type": "Organization", "name": "Smoky Mountain CPAs"}, "datePublished": "2026-08-31", "dateModified": "2026-08-31", "mainEntityOfPage": "https://smokymtncpas.com/switching-accountants/"}</script>
 <body>
 <header class="site-header">
   <div class="wrap header-inner">
@@ -84,7 +107,7 @@ src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
 <section class="hero">
   <div class="wrap" style="max-width:760px;">
     <span class="eyebrow">Changing firms</span>
-    <h1>How to switch accountants, and when you should</h1>
+    <h1>Switching accountants: how to do it, and when it is time</h1>
     <p>You can leave any time of year, you own your records, and the handoff is smaller than most owners expect. Here is what it actually involves.</p>
   </div>
 </section>
