@@ -22,6 +22,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -34,6 +35,8 @@ CALENDLY_URL = "https://calendly.com/smokymountaincpas/30-min-discovery-call"
 DEFAULT_TEMPLATE = "learning-center/set-aside-cash-for-taxes/index.html"
 DEFAULT_FIXTURE = "scripts/fixtures/blg_articles.json"
 PAGE_SIZE = 50
+RETRIES = 4
+USER_AGENT = "Mozilla/5.0 (compatible; smcpas-blg-pull/1.0)"
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 BLG_HOST_RE = re.compile(r"babylovegrowth\.ai", re.I)
 
@@ -56,15 +59,21 @@ class ApiSource:
             "X-API-Key": self._key,
             "Content-Type": "application/json",
             "Accept": "application/json",
-            "User-Agent": "smcpas-blg-pull/1.0",
+            "User-Agent": USER_AGENT,
         })
-        try:
-            with urllib.request.urlopen(req, timeout=60) as resp:
-                return json.loads(resp.read().decode("utf-8"))
-        except urllib.error.HTTPError as e:
-            raise PipelineError("BabyLoveGrowth API returned HTTP %s for %s" % (e.code, path))
-        except urllib.error.URLError as e:
-            raise PipelineError("BabyLoveGrowth API unreachable: %s" % e.reason)
+        for attempt in range(RETRIES + 1):
+            try:
+                with urllib.request.urlopen(req, timeout=60) as resp:
+                    return json.loads(resp.read().decode("utf-8"))
+            except urllib.error.HTTPError as e:
+                if e.code == 429 and attempt < RETRIES:
+                    # rate limited: wait (Retry-After if given) and try again
+                    wait = e.headers.get("Retry-After") if e.headers else None
+                    time.sleep(int(wait) if wait and wait.isdigit() else 10 * (attempt + 1))
+                    continue
+                raise PipelineError("BabyLoveGrowth API returned HTTP %s for %s" % (e.code, path))
+            except urllib.error.URLError as e:
+                raise PipelineError("BabyLoveGrowth API unreachable: %s" % e.reason)
 
     def list_articles(self):
         out, offset = [], 0
@@ -217,7 +226,7 @@ def fetch_images(content, slug_dir, dry):
         name = "image-%d%s" % (i, ext if ext in (".png", ".jpg", ".jpeg", ".webp", ".gif", ".avif") else ".png")
         if not dry:
             try:
-                with urllib.request.urlopen(url, timeout=60) as r, open(os.path.join(slug_dir, name), "wb") as f:
+                with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": USER_AGENT}), timeout=60) as r, open(os.path.join(slug_dir, name), "wb") as f:
                     f.write(r.read())
             except (urllib.error.URLError, OSError) as e:
                 print("  warn: image not copied (%s): %s" % (e, url), file=sys.stderr)
