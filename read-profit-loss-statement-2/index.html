@@ -9,11 +9,6 @@
   gtag('js', new Date());
   gtag('config', 'G-2G7BW0Y1GE');
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('a[href^="https://buy.stripe.com"]').forEach(function (a) {
-      a.addEventListener('click', function () {
-        gtag('event', 'begin_checkout', {currency: 'USD', value: 497, item_name: 'Diagnostic Review'});
-      });
-    });
     document.querySelectorAll('a[href*="/book/"]').forEach(function (a) {
       a.addEventListener('click', function () {
         (typeof fbq === 'function') && fbq('track', 'Lead'); gtag('event', 'generate_lead', {lead_type: 'discovery_call_click'});
