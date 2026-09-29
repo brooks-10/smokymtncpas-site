@@ -26,11 +26,6 @@
   gtag('js', new Date());
   gtag('config', 'G-2G7BW0Y1GE');
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('a[href^="https://buy.stripe.com"]').forEach(function (a) {
-      a.addEventListener('click', function () {
-        gtag('event', 'begin_checkout', {currency: 'USD', value: 497, item_name: 'Diagnostic Review'});
-      });
-    });
     document.querySelectorAll('a[href*="/book/"]').forEach(function (a) {
       a.addEventListener('click', function () {
         (typeof fbq === 'function') && fbq('track', 'Lead'); gtag('event', 'generate_lead', {lead_type: 'discovery_call_click'});
@@ -124,7 +119,7 @@ src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
   <div class="wrap">
     <span class="eyebrow" style="color:var(--rust);">How Pricing Works</span>
     <h2>How we arrive at your number.</h2>
-    <p>Most bookkeeping stops at a closed month. You get clean, CPA-reviewed books <strong>and</strong> your business and personal tax returns prepared and filed, quoted as one flat monthly fee after the diagnostic.</p>
+    <p>Most bookkeeping stops at a closed month. You get clean, CPA-reviewed books <strong>and</strong> your business and personal tax returns prepared and filed, quoted as one flat monthly fee after we have looked at your books.</p>
 
     <p>Three things drive the number: how many accounts and transactions you have, whether you carry inventory, and how far behind the books are. A clean set of books on one bank account is not the same job as eighteen months of catch-up across four accounts with inventory, so quoting you before we have looked would either overcharge you or set us both up for a bad conversation later.</p>
     <p>So we look first. It starts with a <a href="/book/">free 30-minute call</a>: then we go inside your QuickBooks, see what is actually there, and quote a flat monthly fee from what we find.</p>
