@@ -124,6 +124,17 @@ class Preview(unittest.TestCase):
         self.assertEqual(blg_pull.add_to_index(idx, {"slug": NEW, "title": "T", "excerpt": "E", "content": "x"}), idx)
 
 
+class Excerpt(unittest.TestCase):
+    def test_excerpt_skips_title_and_image_alt(self):
+        raw = "Real Estate Books\n\n! Title card alt text\n\nFirst real sentence."
+        a = blg_pull.normalise({"slug": "x-y", "title": "Real Estate Books", "excerpt": raw}, "2026-09-30")
+        self.assertEqual(a["excerpt"], "First real sentence.")
+
+    def test_plain_excerpt_unchanged(self):
+        a = blg_pull.normalise({"slug": "x-y", "title": "T", "excerpt": " Plain. "}, "2026-09-30")
+        self.assertEqual(a["excerpt"], "Plain.")
+
+
 class KeyHandling(unittest.TestCase):
     def test_key_never_printed(self):
         secret = "blg_test_SECRET_123"
