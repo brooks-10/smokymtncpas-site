@@ -254,7 +254,7 @@ def normalise(art, today):
         faq = None
     return {
         "id": art.get("id"), "slug": slug, "title": title, "description": desc,
-        "excerpt": (art.get("excerpt") or desc).strip(),
+        "excerpt": next((b.strip() for b in re.split(r"\n\s*\n", art.get("excerpt") or desc) if b.strip() and not b.strip().startswith("!") and b.strip() != title), desc.strip()),
         "keywords": [k for k in (art.get("keywords") or []) if isinstance(k, str)],
         "lang": art.get("languageCode"),
         "date": created if re.match(r"\d{4}-\d{2}-\d{2}$", created) else today,
