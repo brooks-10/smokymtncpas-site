@@ -32,6 +32,7 @@ SITE = "https://smokymtncpas.com"
 GA_ID = "G-2G7BW0Y1GE"
 BUSINESS_ID = SITE + "/#business"
 CALENDLY_URL = "https://calendly.com/smokymountaincpas/30-min-discovery-call"
+TITLE_MAX = 70
 DEFAULT_TEMPLATE = "learning-center/set-aside-cash-for-taxes/index.html"
 DEFAULT_FIXTURE = "scripts/fixtures/blg_articles.json"
 PAGE_SIZE = 50
@@ -137,6 +138,8 @@ class Template:
         h = self.head
         esc = lambda s: html.escape(s, quote=True)
         title = esc(a["title"]) + " | Smoky Mountain CPAs"
+        if len(html.unescape(title)) > TITLE_MAX:  # Semrush flags titles over 70 characters
+            title = esc(a["title"])
         h = re.sub(r"(?is)<title>.*?</title>", "<title>%s</title>" % title, h, 1)
         subs = [
             (r'<meta name="description" content="[^"]*">', '<meta name="description" content="%s">' % esc(a["description"])),
@@ -198,6 +201,10 @@ def clean_content(raw):
     # Drop "Made with BabyLoveGrowth" style credit blocks, then unwrap any other BLG links.
     s = re.sub(r"(?is)<(p|div|span)\b[^>]*>(?:(?!</\1>).)*?made with\s*<a[^>]*babylovegrowth[^>]*>.*?</a>.*?</\1>", "", s)
     s = re.sub(r'(?is)<a\b[^>]*href="[^"]*babylovegrowth\.ai[^"]*"[^>]*>(.*?)</a>', r"\1", s)
+    # Semrush site audit: no nofollow on cited sources, and internal links end in "/" (no 301 hop).
+    s = re.sub(r'(?i)\brel="([^"]*)"', lambda m: 'rel="%s"' % " ".join(w for w in m.group(1).split() if w.lower() != "nofollow"), s)
+    s = re.sub(r'(?i)\s+rel=""', "", s)
+    s = re.sub(r'href="((?:https://smokymtncpas\.com)?/(?:[a-z0-9-]+/)*[a-z0-9-]+)(["#?])', r'href="\1/\2', s)
     return s.strip()
 
 

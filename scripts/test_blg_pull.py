@@ -135,6 +135,28 @@ class Excerpt(unittest.TestCase):
         self.assertEqual(a["excerpt"], "Plain.")
 
 
+class SiteAuditRules(unittest.TestCase):
+    def test_nofollow_dropped_and_internal_links_slashed(self):
+        out = blg_pull.clean_content(
+            '<a href="https://www.irs.gov/x" rel="nofollow noopener noreferrer">a</a>'
+            '<a href="https://smokymtncpas.com/shopify-bookkeeping-checklist">b</a>'
+            '<a href="/links">c</a><a href="/faq/">d</a><a href="/assets/x.pdf">e</a>')
+        self.assertNotIn("nofollow", out)
+        self.assertIn('rel="noopener noreferrer"', out)
+        self.assertIn('href="https://smokymtncpas.com/shopify-bookkeeping-checklist/"', out)
+        self.assertIn('href="/links/"', out)
+        self.assertIn('href="/faq/"', out)
+        self.assertIn('href="/assets/x.pdf"', out)
+
+    def test_long_title_drops_brand_suffix(self):
+        with open(os.path.join(ROOT, "learning-center", "set-aside-cash-for-taxes", "index.html"), encoding="utf-8") as f:
+            tpl = blg_pull.Template(f.read())
+        a = blg_pull.normalise({"slug": "x-y", "title": "A" * 60, "excerpt": "E", "content": "x"}, "2026-10-06")
+        self.assertIn("<title>%s</title>" % ("A" * 60), tpl.head_for(a))
+        a = blg_pull.normalise({"slug": "x-y", "title": "Short title", "excerpt": "E", "content": "x"}, "2026-10-06")
+        self.assertIn("<title>Short title | Smoky Mountain CPAs</title>", tpl.head_for(a))
+
+
 class KeyHandling(unittest.TestCase):
     def test_key_never_printed(self):
         secret = "blg_test_SECRET_123"
