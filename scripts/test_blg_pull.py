@@ -93,7 +93,7 @@ class Preview(unittest.TestCase):
         self.assertNotIn("set-aside-cash-for-taxes", json.dumps(blocks))  # template page's own JSON-LD removed
 
     def test_quote_cta(self):
-        self.assertIn('<a href="https://form.typeform.com/to/YXecRnjr" class="btn" target="_blank" rel="noopener">Get an Instant Quote</a>', self.page)
+        self.assertIn('<a href="https://form.typeform.com/to/F0QnXGSn" class="btn" target="_blank" rel="noopener">Get an Instant Quote</a>', self.page)
 
     def test_content_cleaned(self):
         self.assertNotIn("alert(", self.page.split("<article>")[1])
