@@ -7,11 +7,11 @@
 <link rel="preload" href="/assets/fonts/spectral-600.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fonts/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
 <title>Business and Personal Taxes | Smoky Mountain CPAs</title>
-<meta name="description" content="Two licensed CPAs prepare and file business and personal tax returns. If you are behind, the books are a mess, or a letter showed up, get an instant quote.">
+<meta name="description" content="Tax season should not feel like a pop quiz. Two licensed CPAs in Knoxville prepare and file business and personal returns. Get an instant quote.">
 <link rel="canonical" href="https://smokymtncpas.com/tax/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Business and Personal Taxes | Smoky Mountain CPAs">
-<meta property="og:description" content="We prepare and file business and personal tax returns. Fill out the instant quote form and you get your quote and the next steps.">
+<meta property="og:description" content="Tax season should not feel like a pop quiz. Two licensed CPAs prepare and file business and personal returns. Get an instant quote.">
 <meta property="og:url" content="https://smokymtncpas.com/tax/">
 <meta property="og:image" content="https://smokymtncpas.com/assets/images/og-v4.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -26,7 +26,7 @@
   gtag('js', new Date());
   gtag('config', 'G-2G7BW0Y1GE');
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('a[href*="form.typeform.com/to/YXecRnjr"]').forEach(function (a) {
+    document.querySelectorAll('a[href*="form.typeform.com/to/YXecRnjr"], a[href="/book/#instant-quote"]').forEach(function (a) {
       a.addEventListener('click', function () {
         (typeof fbq === 'function') && fbq('track', 'Lead'); gtag('event', 'generate_lead', {lead_type: 'instant_quote_click'});
       });
@@ -64,6 +64,40 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<style>
+  .tax-hero{
+    background:
+      linear-gradient(105deg, rgba(31,42,36,.94) 0%, rgba(31,42,36,.82) 46%, rgba(31,42,36,.55) 100%),
+      radial-gradient(circle at 100% 0%, #C4622D 0%, transparent 46%),
+      radial-gradient(circle at 0% 110%, #2E5E4A 0%, transparent 42%),
+      #1F2A24;
+  }
+  .tax-hero h1{font-size:clamp(3.2rem, 8.2vw, 6.4rem);max-width:12ch;}
+  .tax-hero .btn{padding:18px 34px;font-size:18px;}
+  .tax-hero-note{color:#e7efe6;font-size:16px;}
+  .tax-hero-note a{color:#fffaf2;text-underline-offset:3px;}
+  .tax-hero .hero-trustline{color:#fffaf2;}
+  .tax-icon{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:44px;height:44px;border-radius:50%;
+    background:rgba(196,98,45,.12);color:var(--maple-ink);margin-bottom:14px;
+  }
+  .tax-icon svg{display:block;}
+  .tax-card h3{margin-bottom:.35em;}
+  .tax-card p{margin:0;}
+  .tax-step-num{
+    display:block;font-family:var(--serif);font-weight:600;
+    font-size:clamp(2.4rem, 4vw, 3.2rem);line-height:1;color:var(--maple);margin-bottom:10px;
+  }
+  .section-dark .tax-hero-note,.section-dark .small{color:#e7efe6;}
+  @media (prefers-reduced-motion:no-preference){
+    .tax-card{transition:transform .18s ease, box-shadow .18s ease;}
+    .tax-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .tax-card{transition:none;}
+  }
+</style>
 </head>
 <body>
 <header class="site-header">
@@ -97,35 +131,147 @@ src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
 </header>
 <main>
 
-<section class="hero">
+<section class="hero tax-hero">
   <div class="wrap">
-    <p class="eyebrow">Tax</p>
-    <h1>We do business and personal taxes.</h1>
-    <p>Two licensed CPAs prepare and file your business return and your personal return. If tax season feels heavy, you do not have to sort it out alone.</p>
+    <span class="eyebrow">Tax &middot; two licensed CPAs</span>
+    <h1>Tax season shouldn&rsquo;t feel like a <em>pop quiz.</em></h1>
+    <p>Filings piled up. Books a mess. A letter you have not opened. Two licensed CPAs in Knoxville file the business return and the personal one.</p>
     <p><a class="btn" href="https://form.typeform.com/to/YXecRnjr" target="_blank" rel="noopener">Get an Instant Quote</a></p>
-  </div>
-</section>
-
-<section class="section-alt">
-  <div class="wrap" style="max-width:760px;">
-    <h2>If this sounds familiar</h2>
-    <ul class="checklist">
-      <li>You are behind on filings, and the pile keeps growing.</li>
-      <li>The books are a mess when tax time shows up.</li>
-      <li>A letter came from the IRS or the state, and you are not sure what it means.</li>
-      <li>You do not know what you owe, or whether you will have the money when it is due.</li>
-      <li>Last year&rsquo;s return is still sitting there, unfinished.</li>
+    <p class="tax-hero-note">Prefer to fill it out here? <a href="/book/#instant-quote">Get an instant quote on our site</a>.</p>
+    <ul class="hero-trustline">
+      <li>Two licensed CPAs</li><li>&middot;</li><li>Knoxville, Tennessee</li><li>&middot;</li><li>Big Four trained</li><li>&middot;</li><li>&#9733;&#9733;&#9733;&#9733;&#9733; 5.0 on Google</li>
     </ul>
   </div>
 </section>
 
-<section>
-  <div class="wrap" style="max-width:760px;">
-    <h2>We can take it from here.</h2>
-    <p>We take the tax work off your plate. We get it done right and on time, and we keep it simple. You tell us where things stand. We handle the returns.</p>
-    <p>Fill out the instant quote form. You get your quote and the next steps from there.</p>
+<section class="section-alt" id="sound-familiar">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--rust);">Sound familiar?</span>
+    <h2>April has a way of <em>finding the folder.</em></h2>
+    <p>None of this means you fell behind the people who have it together. The work just sat there. It is a lot to face alone.</p>
+    <div class="grid grid-3">
+      <div class="card tax-card">
+        <span class="tax-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M14 3v5h5M8 13h8M8 17h5"/><path d="M5 7H4a1 1 0 0 0-1 1v13"/></svg></span>
+        <h3>Behind on filings</h3>
+        <p>The pile grew. Again. Another year started before the last one finished.</p>
+      </div>
+      <div class="card tax-card">
+        <span class="tax-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M4 6h16M4 10h10M4 14h13M4 18h8"/></svg></span>
+        <h3>Messy books</h3>
+        <p>Tax time is when the uncategorized pile and the missing months introduce themselves.</p>
+      </div>
+      <div class="card tax-card">
+        <span class="tax-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 8l9 6 9-6"/></svg></span>
+        <h3>The unopened letter</h3>
+        <p>IRS or the state. You are not sure what it wants, so it stays on the counter.</p>
+      </div>
+      <div class="card tax-card">
+        <span class="tax-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.3 2.4c-.8.4-1.3.9-1.3 1.8"/><path d="M12 17.2h.01"/></svg></span>
+        <h3>No idea what you owe</h3>
+        <p>A bill, a refund, or a number you will not have when it is due. You cannot tell.</p>
+      </div>
+      <div class="card tax-card">
+        <span class="tax-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></span>
+        <h3>Last year, still open</h3>
+        <p>Last year&rsquo;s return is still sitting there. This year is already knocking.</p>
+      </div>
+      <div class="card tax-card">
+        <span class="tax-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><rect x="3" y="4" width="8" height="11" rx="1"/><rect x="13" y="9" width="8" height="11" rx="1"/></svg></span>
+        <h3>Business and personal</h3>
+        <p>Two returns, tangled together. Nobody has looked at them as one picture.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how-we-help">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--rust);">How we help</span>
+    <h2>We take it off your plate. <em>We keep you posted.</em></h2>
+    <p>The next step is the form. You get your quote, then the next steps.</p>
+    <div class="grid grid-3">
+      <div class="card tax-card">
+        <span class="tax-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg></span>
+        <h3>Business returns</h3>
+        <p>Schedule C, an S corp (1120-S), or a partnership (1065). Prepared and filed.</p>
+      </div>
+      <div class="card tax-card">
+        <span class="tax-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="8" r="3"/><path d="M5 19c1.2-3 3.4-4.5 7-4.5S17.8 16 19 19"/></svg></span>
+        <h3>Personal returns</h3>
+        <p>On a monthly plan, one owner. A joint return counts as one. Extra owners are quoted separately.</p>
+      </div>
+      <div class="card tax-card">
+        <span class="tax-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16M12 14v4M10 16h4"/></svg></span>
+        <h3>Just this year</h3>
+        <p>Need the return without monthly bookkeeping? We do that too.</p>
+      </div>
+      <div class="card tax-card">
+        <span class="tax-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M8 7h6a3 3 0 0 1 0 6H9a3 3 0 0 0 0 6h7"/></svg></span>
+        <h3>Set aside all year</h3>
+        <p>Taxes set aside every month, so April is not a surprise. The return comes from the same books.</p>
+      </div>
+      <div class="card tax-card">
+        <span class="tax-icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.2 7.6-8 9-4.8-1.4-8-4.5-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <h3>Audit defense</h3>
+        <p>$1 Million Tax Audit Defense on every return we file, plus identity theft restoration. No extra cost.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stat-band" id="why-us">
+  <div class="wrap">
+    <div class="grid grid-3">
+      <div class="stat-item"><span class="stat-value">Two CPAs</span><span class="stat-label">Licensed. Brooks and Caroline do the work. Not a rotating team.</span></div>
+      <div class="stat-item"><span class="stat-value">Knoxville</span><span class="stat-label">East Tennessee, plus remote clients in other states. Big Four trained.</span></div>
+      <div class="stat-item"><span class="stat-value">$1 million</span><span class="stat-label">Tax audit defense on every return we file, at no extra cost.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt" id="how-it-works">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--rust);">How it works</span>
+    <h2>Three steps. None of them is &ldquo;send the return.&rdquo;</h2>
+    <div class="grid grid-3 step-grid">
+      <div class="card tax-card"><span class="tax-step-num" aria-hidden="true">1</span><h3>Answer a few questions.</h3><p>A few minutes. Tell us where things stand. No documents first.</p></div>
+      <div class="card tax-card"><span class="tax-step-num" aria-hidden="true">2</span><h3>Get your instant quote.</h3><p>It is an estimate. We confirm it before any work starts.</p></div>
+      <div class="card tax-card"><span class="tax-step-num" aria-hidden="true">3</span><h3>We get to work.</h3><p>Off your plate. We keep you posted along the way.</p></div>
+    </div>
+    <p style="margin-top:28px;"><a class="btn" href="https://form.typeform.com/to/YXecRnjr" target="_blank" rel="noopener">Get an Instant Quote</a></p>
+  </div>
+</section>
+
+<section class="pull-quote">
+  <div class="wrap">
+    <figure>
+      <blockquote>We take the tax work off your plate. <em>And we keep you posted.</em></blockquote>
+      <cite>Two licensed CPAs &middot; Knoxville</cite>
+    </figure>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--rust);">Common questions</span>
+    <h2>The short answers.</h2>
+    <div class="faq">
+      <details><summary>Do you prepare and file tax returns?</summary><p>Yes. We prepare and file business and personal returns. Every monthly plan includes the business return and one owner&rsquo;s personal return. If you only need this year&rsquo;s return filed, we do that too.</p></details>
+      <details><summary>What business returns do you file?</summary><p>A Schedule C, an S corp (1120-S), or a partnership (1065), plus your personal return. They are prepared and filed by our licensed CPAs.</p></details>
+      <details><summary>Is my tax return included with monthly bookkeeping?</summary><p>Yes. Monthly clients get their business return and one owner&rsquo;s personal return, prepared and filed from the books we keep. A married couple filing jointly counts as one. Each additional owner&rsquo;s personal return is quoted separately.</p></details>
+      <details><summary>What is included for an audit?</summary><p>Every return we file includes $1 Million Tax Audit Defense, plus identity theft restoration, at no extra cost.</p></details>
+      <details><summary>How do I get a quote?</summary><p>Fill out the instant quote form. Your instant quote is an estimate; we confirm it before any work starts.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="section-dark" id="quote">
+  <div class="wrap center">
+    <p class="small" style="color:var(--gold);">Ready when you are</p>
+    <h2>Put the folder down. <em>Get a quote.</em></h2>
+    <p>A few questions. Your quote, then the next steps.</p>
     <p><a class="btn" href="https://form.typeform.com/to/YXecRnjr" target="_blank" rel="noopener">Get an Instant Quote</a></p>
-    <p class="small">Prefer to fill it out here? <a href="/book/#instant-quote">Get an instant quote on our site</a>.</p>
+    <p class="tax-hero-note">Prefer to fill it out here? <a href="/book/#instant-quote">Get an instant quote on our site</a>.</p>
   </div>
 </section>
 
@@ -202,6 +348,7 @@ src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
 </footer>
 <script src="/assets/site.min.js"></script>
 <nav class="contact-bar" aria-label="Contact Smoky Mountain CPAs"><a href="https://form.typeform.com/to/YXecRnjr" class="contact-bar-book" aria-label="Get an Instant Quote" target="_blank" rel="noopener">Get an Instant Quote</a><a href="tel:+18653121203" aria-label="Call Smoky Mountain CPAs at 865-312-1203">Call</a><a href="sms:+18655003331" aria-label="Text Smoky Mountain CPAs at 865-500-3331">Text</a></nav>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Business and personal tax preparation","serviceType":"Tax preparation","url":"https://smokymtncpas.com/tax/","provider":{"@id":"https://smokymtncpas.com/#business"},"areaServed":"United States","description":"Two licensed CPAs prepare and file business and personal tax returns. Fill out the instant quote form and you get your quote and the next steps."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Business and personal tax preparation","serviceType":"Tax preparation","url":"https://smokymtncpas.com/tax/","provider":{"@id":"https://smokymtncpas.com/#business"},"areaServed":[{"@type":"City","name":"Knoxville, TN"},{"@type":"State","name":"Tennessee"},{"@type":"Country","name":"United States"}],"description":"Two licensed CPAs in Knoxville prepare and file business and personal tax returns, including Schedule C, S corp (1120-S), and partnership (1065) returns. Monthly plans include year-round planning. Fill out the instant quote form. Your instant quote is an estimate; we confirm it before any work starts."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you prepare and file tax returns?","acceptedAnswer":{"@type":"Answer","text":"Yes. We prepare and file business and personal returns. Every monthly plan includes the business return and one owner's personal return. If you only need this year's return filed, we do that too."}},{"@type":"Question","name":"What business returns do you file?","acceptedAnswer":{"@type":"Answer","text":"A Schedule C, an S corp (1120-S), or a partnership (1065), plus your personal return. They are prepared and filed by our licensed CPAs."}},{"@type":"Question","name":"Is my tax return included with monthly bookkeeping?","acceptedAnswer":{"@type":"Answer","text":"Yes. Monthly clients get their business return and one owner's personal return, prepared and filed from the books we keep. A married couple filing jointly counts as one. Each additional owner's personal return is quoted separately."}},{"@type":"Question","name":"What is included for an audit?","acceptedAnswer":{"@type":"Answer","text":"Every return we file includes $1 Million Tax Audit Defense, plus identity theft restoration, at no extra cost."}},{"@type":"Question","name":"How do I get a quote?","acceptedAnswer":{"@type":"Answer","text":"Fill out the instant quote form. Your instant quote is an estimate; we confirm it before any work starts."}}]}</script>
 </body>
 </html>
