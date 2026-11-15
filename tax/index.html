@@ -341,40 +341,6 @@ src="https://www.facebook.com/tr?id=1054443447207942&ev=PageView&noscript=1"
 </footer>
 <script src="/assets/site.min.js"></script>
 <nav class="contact-bar" aria-label="Contact Smoky Mountain CPAs"><a href="https://form.typeform.com/to/YXecRnjr" class="contact-bar-book" aria-label="Get an Instant Quote" target="_blank" rel="noopener">Get an Instant Quote</a><a href="tel:+18653121203" aria-label="Call Smoky Mountain CPAs at 865-312-1203">Call</a><a href="sms:+18655003331" aria-label="Text Smoky Mountain CPAs at 865-500-3331">Text</a></nav>
-<script>
-  (function () {
-    var form = document.getElementById('dq-form');
-    if (!form) return;
-    var err = document.getElementById('dq-error');
-    var btn = document.getElementById('dq-btn');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      err.style.display = 'none';
-      var d = { form: 'diagnostic-inquiry',
-        firstName: form.firstName.value.trim(),
-        email: form.email.value.trim(),
-        phone: form.phone.value.trim(),
-        booksSituation: form.booksSituation.value.trim() };
-      if (!d.firstName || !d.email || !d.booksSituation) {
-        err.textContent = 'Please fill in your name, email, and a few words about your books.';
-        err.style.display = 'block'; return;
-      }
-      btn.disabled = true; btn.textContent = 'Sending\u2026';
-      fetch('https://smcpas-chat.brooks-e6f.workers.dev/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) })
-        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
-        .then(function (res) {
-          if (!res.ok) throw new Error(res.j && res.j.error ? res.j.error : 'err');
-          if (typeof gtag === 'function') (typeof fbq === 'function') && fbq('track', 'Lead'); gtag('event', 'generate_lead', { lead_type: 'diagnostic_inquiry_form' });
-          window.location.href = '/thank-you/';
-        })
-        .catch(function (e2) {
-          btn.disabled = false; btn.textContent = 'Have us reach out';
-          err.textContent = (e2 && e2.message && e2.message !== 'err') ? e2.message : 'Something went wrong. Email brooks@smokymountaincpas.com and we will sort it out.';
-          err.style.display = 'block';
-        });
-    });
-  })();
-</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What do you need from me to start a tax return?", "acceptedAnswer": {"@type": "Answer", "text": "Last year's return and this year's documents. Smoky Mountain CPAs sends one short checklist, you upload everything once, and a live tracker shows the rest."}}, {"@type": "Question", "name": "Is the price on the tax calculator the price I pay?", "acceptedAnswer": {"@type": "Answer", "text": "It is the starting price for that kind of return and what most clients pay. It is confirmed in writing after we read last year's return, before any work starts."}}, {"@type": "Question", "name": "Do I have to move my bookkeeping to you for the monthly plans?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The quarterly numbers, estimates, and planning work because the same firm keeps the books. Return-only clients keep their own books and we prepare from their records."}}, {"@type": "Question", "name": "How much does a tax return cost at Smoky Mountain CPAs?", "acceptedAnswer": {"@type": "Answer", "text": "What a return costs depends on what is in it. A sole proprietor with one Schedule C and a single state is a different job from an S corporation with two owners, rental property, and a K-1. Smoky Mountain CPAs reads last year's return first, then confirms the price in writing before any work starts. Every return filed carries $1 Million Tax Audit Defense at no extra cost."}}, {"@type": "Question", "name": "Do you handle personal returns without a business?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, through the Individual Tax Membership: the return prepared and filed, a mid-year checkup with a withholding review, and IRS letters handled. We quote it after reading last year&rsquo;s return, and rentals or K-1s are handled inside the same membership."}}, {"@type": "Question", "name": "What happens if I get an IRS notice or get audited?", "acceptedAnswer": {"@type": "Answer", "text": "Every return Smoky Mountain CPAs files includes $1 Million Tax Audit Defense at no extra charge. If a federal or state notice or audit arrives on a return we prepared, licensed CPAs, enrolled agents, and tax attorneys handle the response and the representation. Coverage runs three years from the April filing deadline for that tax year, and identity theft restoration is included for a year after filing."}}]}</script>
 </body>
 </html>
