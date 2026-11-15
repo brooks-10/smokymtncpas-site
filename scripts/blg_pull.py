@@ -31,7 +31,7 @@ API_BASE = "https://api.babylovegrowth.ai/api/integrations/v1"
 SITE = "https://smokymtncpas.com"
 GA_ID = "G-2G7BW0Y1GE"
 BUSINESS_ID = SITE + "/#business"
-CALENDLY_URL = "https://calendly.com/smokymountaincpas/30-min-discovery-call"
+QUOTE_URL = "https://form.typeform.com/to/YXecRnjr"
 TITLE_MAX = 70
 DEFAULT_TEMPLATE = "learning-center/set-aside-cash-for-taxes/index.html"
 DEFAULT_FIXTURE = "scripts/fixtures/blg_articles.json"
@@ -131,8 +131,8 @@ class Template:
         for b in blocks:
             head = head.replace(b, "@@BUSINESS_LD@@" if b is self.business_ld else "", 1)
         self.head = head
-        cal = re.search(r'href="(https://calendly\.com/[^"]+)"', page)
-        self.booking_url = cal.group(1) if cal else CALENDLY_URL
+        quote = re.search(r'href="(https://form\.typeform\.com/to/[^"]+)"', page)
+        self.booking_url = quote.group(1) if quote else QUOTE_URL
 
     def head_for(self, a):
         h = self.head
@@ -274,8 +274,8 @@ def render_page(tpl, a):
     cta = (
         '<div class="card center" style="margin:28px 0;">\n'
         "<h3>Want a CPA to look at your numbers?</h3>\n"
-        "<p>Book a free 30 minute call. We will walk through your books and tell you what we see.</p>\n"
-        '<p><a href="%s" class="btn">Book a free call &rarr;</a></p>\n'
+        "<p>Get an instant quote in a few minutes. The questions walk through your books.</p>\n"
+        '<p><a href="%s" class="btn" target="_blank" rel="noopener">Get an Instant Quote</a></p>\n'
         "</div>" % html.escape(tpl.booking_url, quote=True)
     )
     body = (

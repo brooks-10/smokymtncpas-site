@@ -128,11 +128,10 @@ minutes to an hour). This is why step ⑥ says wait.
   deliberate, ticketed content/UX change, not scope creep. It is still a
   **local-only** change: nothing here has been pushed, and WordPress is still
   what's live at smokymtncpas.com until Brooks runs steps ①–④ above.
-- The `STRIPE_LINK_HERE` / `CALENDLY_LINK_HERE` / dead `href="#"` CTAs that
+- The `STRIPE_LINK_HERE` placeholder and dead `href="#"` CTAs that
   were carried over verbatim in the original rebuild (see below) were fixed
-  in v3 — all now point to `https://calendly.com/smokymountaincpas`. The
-  Diagnostic Review's Stripe checkout (a real payment flow) is still not
-  built; that CTA now routes to booking a call instead until a real Stripe
+  in v3. The Diagnostic Review's Stripe checkout (a real payment flow) is still not
+  built; that CTA now routes to the instant quote until a real Stripe
   Payment Link exists.
 - Pricing figures in the v3 calculator are marked `v-DRAFT` in code comments
   and are expected to be tuned after Karen's Tuesday follow-up — see the

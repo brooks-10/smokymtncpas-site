@@ -1,0 +1,5 @@
+# GitHub Pages runs Jekyll and would otherwise publish these internal notes
+# as public pages. Same idea as the local-only docs kept out of the site.
+exclude:
+  - GO-LIVE.md
+  - TODO-FORMS.md
