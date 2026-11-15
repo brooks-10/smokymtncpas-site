@@ -92,8 +92,8 @@ class Preview(unittest.TestCase):
         self.assertEqual(art["mainEntityOfPage"], "https://smokymtncpas.com/learning-center/%s/" % NEW)
         self.assertNotIn("set-aside-cash-for-taxes", json.dumps(blocks))  # template page's own JSON-LD removed
 
-    def test_calendly_cta(self):
-        self.assertIn('<a href="https://calendly.com/smokymountaincpas/30-min-discovery-call" class="btn">Book a free call', self.page)
+    def test_quote_cta(self):
+        self.assertIn('<a href="https://form.typeform.com/to/YXecRnjr" class="btn" target="_blank" rel="noopener">Get an Instant Quote</a>', self.page)
 
     def test_content_cleaned(self):
         self.assertNotIn("alert(", self.page.split("<article>")[1])

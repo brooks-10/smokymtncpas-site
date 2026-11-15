@@ -9,11 +9,6 @@
   gtag('js', new Date());
   gtag('config', 'G-2G7BW0Y1GE');
   document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('a[href*="calendly.com/smokymountaincpas"], a[href="/book/"]').forEach(function (a) {
-      a.addEventListener('click', function () {
-        (typeof fbq === 'function') && fbq('track', 'Lead'); gtag('event', 'generate_lead', {lead_type: 'discovery_call_click'});
-      });
-    });
     document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
       a.addEventListener('click', function () {
         gtag('event', 'contact', {contact_type: 'phone_click'});
@@ -24,10 +19,9 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Book time with Brooks | Smoky Mountain CPAs</title>
+<title>Call or text | Smoky Mountain CPAs</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://smokymtncpas.com/client-call/">
-<meta http-equiv="refresh" content="0; url=https://calendly.com/smokymountaincpas/client-call">
 <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
 <style>
   body{margin:0;background:#FAF6EE;color:#1F2A24;font-family:Georgia,'Times New Roman',serif;
@@ -43,9 +37,10 @@
 </head>
 <body>
   <div class="box">
-    <h1>Opening Brooks's calendar</h1>
-    <p>If it doesn't open in a second, use the button.</p>
-    <p><a href="https://calendly.com/smokymountaincpas/client-call">Pick a time</a></p>
+    <h1>Already a client?</h1>
+    <p>Call or text us.</p>
+    <p><a href="tel:+18653121203">Call (865) 312-1203</a></p>
+    <p><a href="sms:+18655003331">Text (865) 500-3331</a></p>
   </div>
 </body>
 </html>
